@@ -109,7 +109,7 @@ const SpecialPay = () => {
       const result = await dispatch(spacialPay(formData) as any);
   
 
-      if (freeQoute.fulfilled.match(result)) {
+      if (spacialPay.fulfilled.match(result)) {
         setSuccessMsg(result.payload.message || "Form submitted successfully!");  // رسالة النجاح
         setErrorMsg("");
         scrollToTop();  

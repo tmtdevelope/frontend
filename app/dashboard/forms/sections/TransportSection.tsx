@@ -12,8 +12,6 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { useTheme } from "next-themes";
 import { FormSectionProps } from "../types/form";
-import { TimeInput } from "../components/TimeInput";
-import { useState, useCallback } from "react";
 import { tripTypes } from "../constants/form";
 import {
   baseSelectStyles,
@@ -130,27 +128,31 @@ export function TransportSection({
 
           <Grid item xs={12} md={6}>
             <TextField
-    fullWidth
-    label="Pickup Address *"
-    error={!!errors.pickupAddress?.message}
-    helperText={errors.pickupAddress?.message}
-    {...register("pickupAddress", { required: "Pickup Address is required" })}
-    InputProps={inputProps}
-    InputLabelProps={labelProps}
-    sx={getInputStyles()}
+              fullWidth
+              label="Pickup Address *"
+              error={!!errors.pickupAddress?.message}
+              helperText={errors.pickupAddress?.message}
+              {...register("pickupAddress", {
+                required: "Pickup Address is required",
+              })}
+              InputProps={inputProps}
+              InputLabelProps={labelProps}
+              sx={getInputStyles()}
             />
           </Grid>
 
           <Grid item xs={12} md={6}>
             <TextField
-             fullWidth
-             label="Drop-off Address *"
-             error={!!errors.dropoffAddress?.message}
-             helperText={errors.dropoffAddress?.message}
-             {...register("dropoffAddress", { required: "Drop-off Address is required" })}
-             InputProps={inputProps}
-             InputLabelProps={labelProps}
-             sx={getInputStyles()}
+              fullWidth
+              label="Drop-off Address *"
+              error={!!errors.dropoffAddress?.message}
+              helperText={errors.dropoffAddress?.message}
+              {...register("dropoffAddress", {
+                required: "Drop-off Address is required",
+              })}
+              InputProps={inputProps}
+              InputLabelProps={labelProps}
+              sx={getInputStyles()}
             />
           </Grid>
 
@@ -250,15 +252,17 @@ export function TransportSection({
 
           <Grid item xs={12} md={6}>
             <TextField
-                fullWidth
-                label="Number of Passengers *"
-                type="number"
-                error={!!errors.passengerCount?.message}
-                helperText={errors.passengerCount?.message}
-                {...register("passengerCount", { required: "Number of Passengers is required" })}
-                InputProps={inputProps}
-                InputLabelProps={labelProps}
-                sx={getInputStyles()}
+              fullWidth
+              label="Number of Passengers *"
+              type="number"
+              error={!!errors.passengerCount?.message}
+              helperText={errors.passengerCount?.message}
+              {...register("passengerCount", {
+                required: "Number of Passengers is required",
+              })}
+              InputProps={inputProps}
+              InputLabelProps={labelProps}
+              sx={getInputStyles()}
             />
           </Grid>
         </Grid>

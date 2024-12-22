@@ -41,7 +41,7 @@ const InsuranceSection = () => {
   } = useForm<FormDataInsurance>();
 
   const onSubmit = async (data: Record<string, any>): Promise<void> => {
-     try {
+    try {
       const formData = new FormData();
 
       const formatDate = (date: string | undefined): string | null =>
@@ -94,23 +94,23 @@ const InsuranceSection = () => {
         formData.append(`documents[${index}]`, url);
       });
 
-       const result = await dispatch(insurancePay(formData) as any);
-   
-         if (insurancePay.fulfilled.match(result)) {
-           setSuccessMsg(result.payload.message || "Form submitted successfully!");   
-           setErrorMsg("");
-           scrollToTop();  
-         } else {
-           setErrorMsg("Something went wrong. Please try again.");
-           setSuccessMsg("");
-           scrollToTop();
-         }
-       } catch (error) {
-         console.error("Error during form submission:", error);
-         setErrorMsg("An error occurred while submitting the form.");
-         scrollToTop();
-         setSuccessMsg("");
-       }
+      const result = await dispatch(insurancePay(formData) as any);
+
+      if (insurancePay.fulfilled.match(result)) {
+        setSuccessMsg(result.payload.message || "Form submitted successfully!");
+        setErrorMsg("");
+        scrollToTop();
+      } else {
+        setErrorMsg("Something went wrong. Please try again.");
+        setSuccessMsg("");
+        scrollToTop();
+      }
+    } catch (error) {
+      console.error("Error during form submission:", error);
+      setErrorMsg("An error occurred while submitting the form.");
+      scrollToTop();
+      setSuccessMsg("");
+    }
   };
   const renderFormSection = ({
     title,
@@ -146,10 +146,12 @@ const InsuranceSection = () => {
     <Container className="form-container">
       <Paper
         elevation={3}
-        className={`form-paper ${
-          isDarkTheme ? "form-paper-dark" : "form-paper-light"
-        }`}
-        sx={{ p: 4 }}
+        sx={{
+          backgroundColor: isDarkTheme ? "#1f2937" : "#fff",
+          padding: 4,
+          borderRadius: "10px",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        }}
       >
         <Grid container spacing={2} sx={{ mb: 4 }}>
           <TitleForm title="Insurance Pay" primaryColor={primaryColor} />

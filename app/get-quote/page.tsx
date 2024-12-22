@@ -104,13 +104,12 @@ const GetFreeQoate = () => {
         formData.append(`documents[${index}]`, url);
       });
 
- 
       const result = await dispatch(freeQoute(formData) as any);
 
       if (freeQoute.fulfilled.match(result)) {
-        setSuccessMsg(result.payload.message || "Form submitted successfully!");  
+        setSuccessMsg(result.payload.message || "Form submitted successfully!");
         setErrorMsg("");
-        scrollToTop();  
+        scrollToTop();
       } else {
         setErrorMsg("Something went wrong. Please try again.");
         setSuccessMsg("");
@@ -158,10 +157,12 @@ const GetFreeQoate = () => {
     <Container className="form-container">
       <Paper
         elevation={3}
-        className={`form-paper ${
-          isDarkTheme ? "form-paper-dark" : "form-paper-light"
-        }`}
-        sx={{ p: 4 }}
+        sx={{
+          backgroundColor: isDarkTheme ? "#1f2937" : "#fff",
+          padding: 4,
+          borderRadius: "10px",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        }}
       >
         <Grid container spacing={2} sx={{ mb: 4 }}>
           <TitleForm title="Get Free Qoute" primaryColor={primaryColor} />

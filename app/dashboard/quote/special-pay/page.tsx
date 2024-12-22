@@ -40,7 +40,7 @@ const SpecialPay = () => {
   const state = useSelector((state: RootState) => state);
 
   console.log("state:", state);
- 
+
   const {
     register,
     handleSubmit,
@@ -52,15 +52,14 @@ const SpecialPay = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
- 
+
   const onSubmit = async (data: Record<string, any>): Promise<void> => {
-   
     try {
       const formData = new FormData();
-  
-       const formatDate = (date: string | undefined): string | null =>
+
+      const formatDate = (date: string | undefined): string | null =>
         date ? new Date(date).toISOString().split("T")[0] : null;
-  
+
       const formatTime = (time: string | undefined): string | null =>
         time
           ? new Date(time).toLocaleTimeString("en-US", {
@@ -73,13 +72,16 @@ const SpecialPay = () => {
       const formattedPickupDate = formatDate(data.pickupDate);
       const formattedPickupTime = formatTime(data.pickupTime);
       const formattedAppointmentTime = formatTime(data.appointmentTime);
-  
-      if (formattedDateOfBirth) formData.append("dateOfBirth", formattedDateOfBirth);
-      if (formattedPickupDate) formData.append("pickupDate", formattedPickupDate);
-      if (formattedPickupTime) formData.append("pickupTime", formattedPickupTime);
+
+      if (formattedDateOfBirth)
+        formData.append("dateOfBirth", formattedDateOfBirth);
+      if (formattedPickupDate)
+        formData.append("pickupDate", formattedPickupDate);
+      if (formattedPickupTime)
+        formData.append("pickupTime", formattedPickupTime);
       if (formattedAppointmentTime)
         formData.append("appointmentTime", formattedAppointmentTime);
-  
+
       Object.keys(data).forEach((key) => {
         if (
           ![
@@ -95,24 +97,23 @@ const SpecialPay = () => {
           }
         }
       });
-  
+
       imageUrls.forEach((url, index) => {
         formData.append(`images[${index}]`, url);
       });
-  
+
       fileUrls.forEach((url, index) => {
         formData.append(`documents[${index}]`, url);
       });
-  
+
       // استخدام الـ Dispatch
-  
+
       const result = await dispatch(spacialPay(formData) as any);
-  
 
       if (spacialPay.fulfilled.match(result)) {
-        setSuccessMsg(result.payload.message || "Form submitted successfully!");  // رسالة النجاح
+        setSuccessMsg(result.payload.message || "Form submitted successfully!"); // رسالة النجاح
         setErrorMsg("");
-        scrollToTop();  
+        scrollToTop();
       } else {
         setErrorMsg("Something went wrong. Please try again.");
         setSuccessMsg("");
@@ -125,7 +126,7 @@ const SpecialPay = () => {
       setSuccessMsg("");
     }
   };
-  
+
   const renderFormSection = ({
     title,
     children,
@@ -160,12 +161,14 @@ const SpecialPay = () => {
     <Container className="form-container">
       <Paper
         elevation={3}
-        className={`form-paper ${
-          isDarkTheme ? "form-paper-dark" : "form-paper-light"
-        }`}
-        sx={{ p: 4 }}
+        sx={{
+          backgroundColor: isDarkTheme ? "#1f2937" : "#fff",
+          padding: 4,
+          borderRadius: "10px",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        }}
       >
-   <Grid container spacing={2} sx={{ mb: 4 }}>
+        <Grid container spacing={2} sx={{ mb: 4 }}>
           <TitleForm title="Special Pay" primaryColor={primaryColor} />
         </Grid>
 
@@ -203,7 +206,7 @@ const SpecialPay = () => {
             <ServiceSection
               register={register}
               errors={errors}
-              control={control}//1---
+              control={control} //1---
               setValue={setValue}
               watch={watch}
               renderFormSection={renderFormSection}
@@ -224,7 +227,7 @@ const SpecialPay = () => {
               imageUrls={imageUrls}
               setImageUrls={setImageUrls}
             />
-              <SubmitButton />
+            <SubmitButton />
           </Grid>
         </form>
       </Paper>

@@ -5,6 +5,13 @@
 .form-paper {
   @apply rounded-xl shadow-lg overflow-hidden;
 }
+/* .form-paper {
+  background-color: #fff;
+}
+
+.form-paper-dark {
+  background-color: #333 !important;
+} */
 
  
 .form-title {

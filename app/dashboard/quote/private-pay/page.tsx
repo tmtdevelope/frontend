@@ -160,10 +160,12 @@ const PrivatePay = () => {
     <Container className="form-container">
       <Paper
         elevation={3}
-        className={`form-paper ${
-          isDarkTheme ? "form-paper-dark" : "form-paper-light"
-        }`}
-        sx={{ p: 4 }}
+        sx={{
+          backgroundColor: isDarkTheme ? "#1f2937" : "#fff",
+          padding: 4,
+          borderRadius: "10px",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        }}
       >
         <Grid item xs={12}>
           <TitleForm title={"Private Pay"} primaryColor={primaryColor} />

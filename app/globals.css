@@ -87,9 +87,9 @@
   --border-color: rgba(255, 255, 255, 0.12);
   --bg-mui: #1f2937;
 }
-.css-qunil7-MuiPaper-root {
+/* .css-qunil7-MuiPaper-root {
   background-color: var(--bg-mui) !important;
-}
+} */
 
 body {
   margin-top: 80px;

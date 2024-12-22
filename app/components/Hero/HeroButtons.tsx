@@ -1,5 +1,5 @@
 /** @format */
-
+"use client"
 import React from 'react';
 import { Box } from '@mui/material';
 import Link from 'next/link';
@@ -12,7 +12,7 @@ const HeroButtons = () => (
 		gap={2}
 		mt={2}>
 		<Link
-			href='/login'
+			href='/auth/login'
 			passHref>
 			<Box
 				sx={{
@@ -42,7 +42,7 @@ const HeroButtons = () => (
 		</Link>
 
 		<Link
-			href='/quote'
+			href='/get-quote'
 			passHref>
 			<Box
 				sx={{

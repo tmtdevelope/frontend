@@ -18,10 +18,24 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/contact"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/contact", "app/redux/slice/formSlice.js", "app/Theme/page.jsx"],
+  "exclude": ["node_modules"],
+  "types": [
+    "node",
+    "react",
+    "react-dom",
+    "google.maps",
+    "hoist-non-react-statics",
+    "json5",
+    "prop-types",
+    "react-places-autocomplete",
+    "react-transition-group",
+    "use-sync-external-store",
+    "yup"
+  ]
 }

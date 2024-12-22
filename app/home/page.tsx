@@ -1,7 +1,6 @@
 /** @format */
 'use client';
 
-import FAQ from '../components/FAQ/FAQ';
 import Hero from '../components/Hero/Hero';
 import React from 'react';
 import Services from '../components/Services/Services';
@@ -17,7 +16,6 @@ function Home() {
 				<ServicesTwo />
 				<EventPlanning />
 				<ServicesSection />
-				{/* <FAQ /> */}
 			</div>
 		</>
 	);

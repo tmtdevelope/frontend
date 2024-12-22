@@ -5,17 +5,17 @@ import { useTheme } from 'next-themes';
 import { DarkMode, LightMode } from '@mui/icons-material';
 
 export default function ModeToggle() {
-	const { theme, setTheme } = useTheme();
+	const { resolvedTheme, setTheme } = useTheme();
 
 	const handleThemeToggle = () => {
-		setTheme(theme === 'light' ? 'dark' : 'light');
+		setTheme(resolvedTheme === 'light' ? 'dark' : 'light');
 	};
 
 	return (
 		<IconButton
 			onClick={handleThemeToggle}
 			color='inherit'>
-			{theme === 'light' ? <LightMode /> : <DarkMode />}
+			{resolvedTheme === 'light' ? <LightMode /> : <DarkMode />}
 		</IconButton>
 	);
 }

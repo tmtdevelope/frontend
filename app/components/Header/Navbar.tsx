@@ -34,8 +34,8 @@ const Navbar = () => {
 
 	return (
 		<AppBar
-			position='static'
-			sx={sharedStyles}>
+		position="fixed" 
+		sx={sharedStyles}>
 			<Container maxWidth='lg'>
 
 				<Toolbar

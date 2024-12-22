@@ -63,12 +63,69 @@
 	padding: 0;
 	margin: 0;
 }
-[data-theme='light'] {
-	--background-color: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-	/* --background-color: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%); */
-	--text-color: #000000;
+
+.MuiOutlinedInput-root {
+	border-radius: 8px;
+	background-color: var(--background-color);
+	transition: background-color 0.3s ease;
+  }
+  
+  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+	border-color: var(--border-color);
+  }
+  
+  .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+	border-color: var(--text-color);
+  }
+  
+  .MuiInputLabel-root {
+	color: var(--text-color);
+	transition: color 0.3s ease;
+  }
+  
+  .MuiInputLabel-root.Mui-focused {
+	color: var(--text-color);
+  }
+  
+  .MuiTextField-root {
+	margin-bottom: 1rem;
+  }
+  
+  .MuiFormControl-root {
+	width: 100%;
+	margin: 0.5rem 0;
+  }
+  
+:root {
+	
+	--icon-color-light: #000; 
+	--icon-color-dark: #fff; 
 }
 
+[data-theme="light"] {
+	--background-color: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+	--text-color: #000000;
+	--border-color: rgba(0, 0, 0, 0.12);
+  }
+  
+  [data-theme="dark"] {
+	--background-color: linear-gradient(275.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
+	--text-color: #ffffff;
+	--border-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  body {
+	margin-top: 80px;
+	background: var(--background-color);
+	color: var(--text-color);
+	transition: all 0.3s ease;
+  }
+/*  
+ [data-theme='light'] {
+	--background-color: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+	 /* no used --background-color: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%); */
+	/* --text-color: #000000;
+}
 [data-theme='dark'] {
 	--background-color: linear-gradient(
 		275.6deg,
@@ -77,14 +134,16 @@
 		rgb(0, 0, 0) 98.6%
 	);
 	--text-color: #ffffff;
-}
+} 
 
 body {
+	margin-top: 80px;
+
 	background-image: var(--background-color);
 	color: var(--text-color);
-	max-width: 100vw;
+	max-width: 100vw; 
 	overflow-x: hidden;
-}
+}  */
 .link {
 	width: fit-content;
 	position: relative;

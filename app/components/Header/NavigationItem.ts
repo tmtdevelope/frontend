@@ -7,7 +7,7 @@ export const navigationItems: NavigationItem[] = [
 	{
 		id: 'quote',
 		label: 'Get A Quote',
-		href: '/quote',
+		href: '/get-quote',
 		ariaLabel: 'Request a quote',
 	},
 	{

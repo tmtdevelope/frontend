@@ -3,7 +3,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import Link from 'next/link';
-import { LogIn, Calculator } from 'lucide-react';
+import { LogIn, Calculator, BookmarkPlus } from 'lucide-react';
 
 const HeroButtons = () => (
 	<Box
@@ -12,7 +12,7 @@ const HeroButtons = () => (
 		gap={2}
 		mt={2}>
 		<Link
-			href='/auth/login'
+			href='/booking-now'
 			passHref>
 			<Box
 				sx={{
@@ -37,7 +37,8 @@ const HeroButtons = () => (
 						outlineOffset: '2px',
 					},
 				}}>
-				<LogIn style={{ width: 20, height: 20 }} /> Account Login
+					<BookmarkPlus style={{ width: 20, height: 20 }}  />
+				  Book Now
 			</Box>
 		</Link>
 
@@ -51,7 +52,7 @@ const HeroButtons = () => (
 					display: 'flex',
 					alignItems: 'center',
 					gap: 1,
-					px: 4,
+					px: 3,
 					py: 1.5,
 					borderRadius: '8px',
 					textTransform: 'none',

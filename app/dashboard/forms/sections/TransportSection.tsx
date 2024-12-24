@@ -21,6 +21,7 @@ import {
 } from "./styles";
 import { useFormTheme } from "../utils/theme";
 import { Controller } from "react-hook-form";
+import GooglePlacesAutocomplete from "../components/GoogleMapsScript";
 
 export function TransportSection({
   register,
@@ -68,13 +69,13 @@ export function TransportSection({
                 <DatePicker
                   label="Pickup Date"
                   onChange={(date) => setValue("pickupDate", date)}
-                  value={field.value || null} // التأكد من أن القيمة هي null أو تاريخ صالح
-                  minDate={new Date()} // التأكد من أن التاريخ الحالي هو الحد الأدنى
+                  value={field.value || null}
+                  minDate={new Date()}
                   slotProps={{
                     textField: {
                       fullWidth: true,
-                      error: !!errors.pickupDate?.message, // التأكد من أن الخطأ يتعلق بالحقل الصحيح
-                      helperText: errors.pickupDate?.message, // التأكد من الرسالة الصحيحة
+                      error: !!errors.pickupDate?.message,
+                      helperText: errors.pickupDate?.message,
                       InputProps: inputProps,
                       InputLabelProps: labelProps,
                       sx: getInputStyles(),
@@ -127,32 +128,41 @@ export function TransportSection({
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              label="Pickup Address *"
-              error={!!errors.pickupAddress?.message}
-              helperText={errors.pickupAddress?.message}
-              {...register("pickupAddress", {
-                required: "Pickup Address is required",
-              })}
-              InputProps={inputProps}
-              InputLabelProps={labelProps}
-              sx={getInputStyles()}
+            <Controller
+              name="pickupAddress"
+              control={control}
+              rules={{ required: "Pickup Address is required" }}
+              render={({ field, fieldState }) => (
+                <GooglePlacesAutocomplete
+                  label="Pickup Address *"
+                  onPlaceSelected={(place) => {
+                    setValue("pickupAddress", place.address);
+                    setValue("pickupLat", place.lat);
+                    setValue("pickupLng", place.lng);
+                  }}
+                  error={!!fieldState.error}
+                  helperText={fieldState.error?.message ?? ""}
+                />
+              )}
             />
           </Grid>
-
           <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              label="Drop-off Address *"
-              error={!!errors.dropoffAddress?.message}
-              helperText={errors.dropoffAddress?.message}
-              {...register("dropoffAddress", {
-                required: "Drop-off Address is required",
-              })}
-              InputProps={inputProps}
-              InputLabelProps={labelProps}
-              sx={getInputStyles()}
+            <Controller
+              name="dropoffAddress"
+              control={control}
+              rules={{ required: "Drop-off Address is required" }}
+              render={({ field, fieldState }) => (
+                <GooglePlacesAutocomplete
+                  label="Drop-off Address *"
+                  onPlaceSelected={(place) => {
+                    setValue("dropoffAddress", place.address);
+                    setValue("dropoffLat", place.lat);
+                    setValue("dropoffLng", place.lng);
+                  }}
+                  error={!!fieldState.error}
+                  helperText={fieldState.error?.message ?? ""}
+                />
+              )}
             />
           </Grid>
 
@@ -160,11 +170,11 @@ export function TransportSection({
             <Controller
               name="appointmentTime"
               control={control}
-              rules={{ required: "Delivery Time is required" }}
+              rules={{ required: "Time is required" }}
               defaultValue={null}
               render={({ field }) => (
                 <MobileTimePicker
-                  label="appointment Delivery Time *"
+                  label="appointment Time *"
                   value={field.value || null}
                   onChange={(newTime) => field.onChange(newTime)}
                   slotProps={{

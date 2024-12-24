@@ -57,8 +57,7 @@ const PrivatePay = () => {
     try {
       const formData = new FormData();
 
-      // تحويل التواريخ
-      const formatDate = (date: string | undefined): string | null =>
+       const formatDate = (date: string | undefined): string | null =>
         date ? new Date(date).toISOString().split("T")[0] : null;
 
       const formatTime = (time: string | undefined): string | null =>
@@ -167,7 +166,7 @@ const PrivatePay = () => {
           boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <Grid item xs={12}>
+            <Grid container spacing={2} sx={{ mb: 4 }}>
           <TitleForm title={"Private Pay"} primaryColor={primaryColor} />
         </Grid>
         {(successMsg || errorMsg) && (
@@ -189,6 +188,8 @@ const PrivatePay = () => {
           <Grid container spacing={3}>
             <PatientSection
               register={register}
+              control={control}
+
               errors={errors}
               setValue={setValue}
               renderFormSection={renderFormSection}

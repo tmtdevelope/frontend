@@ -1,43 +1,45 @@
 "use client";
 
 import { useState } from "react";
-import { Container, Paper, Grid, Typography, Alert, Box } from "@mui/material";
-
+import {
+  Container,
+  Paper,
+  Grid,
+  Typography,
+  Alert,
+  Box
+} from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-import { useTheme } from "next-themes";
-import "../../forms/styles/form.css";
-import { useDispatch, useSelector } from "react-redux";
-
-import { SubmitButton } from "../../forms/components/SubmitButton";
-import { PatientSection } from "../../forms/sections/PatientSection";
-import { TransportSection } from "../../forms/sections/TransportSection";
-import { ServiceSection } from "../../forms/sections/ServiceSection";
-import { RequesterSection } from "../../forms/sections/RequesterSection";
-import { BillingSection } from "../../forms/sections/BillingSection";
-import { RemarksSection } from "../../forms/sections/RemarksSection";
-import { FileUploadSection } from "../../forms/sections/FileUploadSection";
-import { schema } from "../../forms/validations/schema";
-import TitleForm from "../../forms/utils/TitleForm";
-import { RootState } from "@/app/redux/store/store";
 import { scrollToTop } from "@/app/utils/scroll";
-import { facilityPay } from "@/app/redux/actions/facilityPayAction";
+import { useTheme } from "next-themes";
+import "../dashboard/forms/styles/form.css";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store/store";
+import { privatePay } from "@/app/redux/actions/privatePayActions";
+import { ServiceSection } from "../dashboard/forms/sections/ServiceSection";
+import { SubmitButton } from "../dashboard/forms/components/SubmitButton";
+import TitleForm from "../dashboard/forms/utils/TitleForm";
+import { schema } from "../dashboard/forms/validations/schema";
+import { FileUploadSection } from "../dashboard/forms/sections/FileUploadSection";
+import { RemarksSection } from "../dashboard/forms/sections/RemarksSection";
+import { RequesterSection } from "../dashboard/forms/sections/RequesterSection";
+import { TransportSection } from "../dashboard/forms/sections/TransportSection";
+ import { bookingNow } from "../redux/actions/bookingNowActions";
+import { PatientSection } from "../dashboard/forms/sections/PatientSection";
 
-const FacilityPay = () => {
+const BookingNow = () => {
   const { theme } = useTheme();
   const isDarkTheme = theme === "dark";
   const primaryColor = isDarkTheme ? "#2563eb" : "#1E40AF";
-
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-
   const [fileUrls, setFileUrls] = useState<string[]>([]);
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state);
-
   console.log("state:", state);
+
   const {
     register,
     handleSubmit,
@@ -50,11 +52,13 @@ const FacilityPay = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: Record<string, any>): Promise<void> => {
+    console.log("data:", data);
+
     try {
       const formData = new FormData();
 
-      const formatDate = (date: string | undefined): string | null =>
+       const formatDate = (date: string | undefined): string | null =>
         date ? new Date(date).toISOString().split("T")[0] : null;
 
       const formatTime = (time: string | undefined): string | null =>
@@ -103,9 +107,9 @@ const FacilityPay = () => {
         formData.append(`documents[${index}]`, url);
       });
 
-      const result = await dispatch(facilityPay(formData) as any);
+      const result = await dispatch(bookingNow(formData) as any);
 
-      if (facilityPay.fulfilled.match(result)) {
+      if (privatePay.fulfilled.match(result)) {
         setSuccessMsg(result.payload.message || "Form submitted successfully!");
         setErrorMsg("");
         scrollToTop();
@@ -121,6 +125,7 @@ const FacilityPay = () => {
       setSuccessMsg("");
     }
   };
+
   const renderFormSection = ({
     title,
     children,
@@ -162,10 +167,9 @@ const FacilityPay = () => {
           boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <Grid container spacing={2} sx={{ mb: 4 }}>
-          <TitleForm title={"Facility Pay"} primaryColor={primaryColor} />
+             <Grid container spacing={2} sx={{ mb: 4 }}>
+          <TitleForm title={" Booking Now"} primaryColor={primaryColor} />
         </Grid>
-
         {(successMsg || errorMsg) && (
           <Box mb={3}>
             {successMsg && (
@@ -201,8 +205,8 @@ const FacilityPay = () => {
             <ServiceSection
               register={register}
               errors={errors}
-              control={control}
               setValue={setValue}
+              control={control}
               watch={watch}
               renderFormSection={renderFormSection}
             />
@@ -211,13 +215,7 @@ const FacilityPay = () => {
               errors={errors}
               renderFormSection={renderFormSection}
             />
-            <BillingSection
-              setValue={setValue}
-              register={register}
-              control={control}
-              errors={errors}
-              renderFormSection={renderFormSection}
-            />
+
             <RemarksSection
               register={register}
               renderFormSection={renderFormSection}
@@ -236,4 +234,4 @@ const FacilityPay = () => {
     </Container>
   );
 };
-export default FacilityPay;
+export default BookingNow;

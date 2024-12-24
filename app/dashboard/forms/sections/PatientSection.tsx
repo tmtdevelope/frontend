@@ -5,46 +5,21 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers";
 import { useTheme } from "next-themes";
+import { Controller } from "react-hook-form";
+import GooglePlacesAutocomplete from "../components/GoogleMapsScript";
+import { useFormTheme } from "../utils/theme";
 
 export function PatientSection({
   register,
   errors,
   setValue,
+  control,
   renderFormSection,
 }: any) {
   const { theme } = useTheme();
   const isDarkTheme = theme === "dark";
   const currentDate = new Date();
-
-  const getInputStyles = () => ({
-    "& .MuiOutlinedInput-root": {
-      borderRadius: "8px", // إضافة Rediuse
-      "& fieldset": {
-        borderColor: isDarkTheme
-          ? "rgba(255, 255, 255, 0.23)"
-          : "rgba(0, 0, 0, 0.23)",
-      },
-      "&:hover fieldset": {
-        borderColor: isDarkTheme ? "#90caf9" : "#1976d2",
-      },
-      backgroundColor: isDarkTheme
-        ? "rgba(255, 255, 255, 0.05)"
-        : "transparent",
-    },
-  });
-
-  const inputProps = {
-    style: {
-      color: isDarkTheme ? "#ffffff" : "#000000",
-      fontSize: "1rem",
-    },
-  };
-
-  const labelProps = {
-    style: {
-      color: isDarkTheme ? "#b3b3b3" : "#666666",
-    },
-  };
+  const { getInputStyles, inputProps, labelProps } = useFormTheme();
 
   return renderFormSection({
     title: "Patient Information",
@@ -53,12 +28,8 @@ export function PatientSection({
         <Grid item xs={12} md={6}>
           <TextField
             fullWidth
-            label="Patient Name *"
-            error={!!errors.patientName}
-            helperText={errors.patientName?.message}
-            {...register("patientName", {
-              required: "Patient Name is required",
-            })}
+            label="Patient Name  "
+            {...register("patientName", {})}
             InputProps={inputProps}
             InputLabelProps={labelProps}
             sx={getInputStyles()}
@@ -68,14 +39,13 @@ export function PatientSection({
         <Grid item xs={12} md={6}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
-              label="Date of Birth *"
+              label="Date of Birth "
               onChange={(date) => setValue("dateOfBirth", date)}
               maxDate={new Date(currentDate.setDate(currentDate.getDate() - 1))}
               slotProps={{
                 textField: {
                   fullWidth: true,
-                  error: !!errors.dateOfBirth?.message,
-                  helperText: errors.dateOfBirth?.message,
+
                   InputProps: inputProps,
                   InputLabelProps: labelProps,
                   sx: getInputStyles(),
@@ -126,9 +96,9 @@ export function PatientSection({
         <Grid item xs={12} md={6}>
           <TextField
             fullWidth
-            label="Patient Weight (in lbs)"
+            label="Patient Weight (in lbs) *"
             type="number"
-            {...register("weight")}
+            {...register("weight", { required: "Weight is required" })}
             InputProps={inputProps}
             InputLabelProps={labelProps}
             sx={getInputStyles()}
@@ -136,15 +106,22 @@ export function PatientSection({
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <TextField
-            fullWidth
-            label="Address *"
-            error={!!errors.address?.message}
-            helperText={errors.address?.message}
-            {...register("address", { required: "Address is required" })}
-            InputProps={inputProps}
-            InputLabelProps={labelProps}
-            sx={getInputStyles()}
+          <Controller
+            name="address"
+            control={control}
+            rules={{ required: "Address is required" }}
+            render={({ field, fieldState }) => (
+              <GooglePlacesAutocomplete
+                label="Address *"
+                onPlaceSelected={(place) => {
+                  setValue("address", place.address);
+                  setValue("addressLat", place.lat);
+                  setValue("addressLng", place.lng);
+                }}
+                error={!!fieldState.error}
+                helperText={fieldState.error?.message ?? ""}
+              />
+            )}
           />
         </Grid>
       </Grid>

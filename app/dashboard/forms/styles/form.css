@@ -5,14 +5,7 @@
 .form-paper {
   @apply rounded-xl shadow-lg overflow-hidden;
 }
-/* .form-paper {
-  background-color: #fff;
-}
-
-.form-paper-dark {
-  background-color: #333 !important;
-} */
-
+ 
  
 .form-title {
   @apply text-2xl md:text-3xl font-bold text-center mb-8;

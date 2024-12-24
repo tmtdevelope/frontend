@@ -169,7 +169,7 @@ const SpecialPay = () => {
         }}
       >
         <Grid container spacing={2} sx={{ mb: 4 }}>
-          <TitleForm title="Special Pay" primaryColor={primaryColor} />
+          <TitleForm title="Special Service Coordination Form" primaryColor={primaryColor} />
         </Grid>
 
         {(successMsg || errorMsg) && (
@@ -192,6 +192,8 @@ const SpecialPay = () => {
             <PatientSection
               register={register}
               errors={errors}
+              control={control}
+
               setValue={setValue}
               renderFormSection={renderFormSection}
             />
@@ -206,7 +208,7 @@ const SpecialPay = () => {
             <ServiceSection
               register={register}
               errors={errors}
-              control={control} //1---
+              control={control}  
               setValue={setValue}
               watch={watch}
               renderFormSection={renderFormSection}

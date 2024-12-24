@@ -9,8 +9,7 @@ function App() {
   const [error, setError] = useState(null);
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey:
-      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "YOUR_GOOGLE_MAPS_API_KEY",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     libraries: placesLibrary,
   });
 

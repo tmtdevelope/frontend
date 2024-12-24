@@ -1,8 +1,8 @@
 import * as yup from "yup";
 
 export const schema = yup.object({
-  patientName: yup.string().required("Patient Name is required"),
-  dateOfBirth: yup.date().nullable().required("Date of Birth is required"),
+  patientName: yup.string(),
+  dateOfBirth: yup.date().nullable(),
   phoneNumber: yup
     .string()
     .matches(/^[0-9]{10}$/, "Phone Number must be a 10-digit number")
@@ -13,10 +13,7 @@ export const schema = yup.object({
   appointmentTime: yup
     .date()
     .nullable()
-    .min(
-      yup.ref("pickupTime"),
-      "Appointment time must be after pickup time"
-    )
+    .min(yup.ref("pickupTime"), "Appointment time must be after pickup time")
     .required("Appointment Time is required"),
   pickupAddress: yup.string().required("Pickup Address is required"),
   dropoffAddress: yup.string().required("Drop-off Address is required"),

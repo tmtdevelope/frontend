@@ -176,6 +176,8 @@ const InsuranceSection = () => {
           <Grid container spacing={3}>
             <PatientSection
               register={register}
+              control={control}
+  
               errors={errors}
               setValue={setValue}
               renderFormSection={renderFormSection}

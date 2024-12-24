@@ -22,6 +22,7 @@ import TitleForm from "../dashboard/forms/utils/TitleForm";
 import { RootState } from "../redux/store/store";
 import { scrollToTop } from "../utils/scroll";
 import { freeQoute } from "../redux/actions/freeQoateActions";
+import { BillingSection } from "../dashboard/forms/sections/BillingSection";
 
 const GetFreeQoate = () => {
   const { theme } = useTheme();
@@ -35,8 +36,7 @@ const GetFreeQoate = () => {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state);
 
-  console.log("state:", state);
-  const {
+   const {
     register,
     handleSubmit,
     formState: { errors },
@@ -49,13 +49,12 @@ const GetFreeQoate = () => {
   });
 
   const onSubmit = async (data: any) => {
-    console.log("Form submitted with data:", data);
-
+    console.log("data", data);
+ 
     try {
       const formData = new FormData();
 
-      // تحويل التواريخ
-      const formatDate = (date: string | undefined): string | null =>
+       const formatDate = (date: string | undefined): string | null =>
         date ? new Date(date).toISOString().split("T")[0] : null;
 
       const formatTime = (time: string | undefined): string | null =>
@@ -108,8 +107,8 @@ const GetFreeQoate = () => {
 
       if (freeQoute.fulfilled.match(result)) {
         setSuccessMsg(result.payload.message || "Form submitted successfully!");
-        setErrorMsg("");
         scrollToTop();
+        setErrorMsg("");
       } else {
         setErrorMsg("Something went wrong. Please try again.");
         setSuccessMsg("");
@@ -188,6 +187,7 @@ const GetFreeQoate = () => {
             <PatientSection
               register={register}
               errors={errors}
+              control={control}
               setValue={setValue}
               renderFormSection={renderFormSection}
             />
@@ -212,6 +212,13 @@ const GetFreeQoate = () => {
             <RequesterSection
               register={register}
               errors={errors}
+              renderFormSection={renderFormSection}
+            />
+            <BillingSection
+              register={register}
+              control={control}
+              errors={errors}
+              setValue={setValue}
               renderFormSection={renderFormSection}
             />
 

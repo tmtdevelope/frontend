@@ -1,0 +1,103 @@
+.form-container {
+  @apply max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8;
+}
+
+.form-paper {
+  @apply rounded-xl shadow-lg overflow-hidden;
+}
+ 
+ 
+.form-title {
+  @apply text-2xl md:text-3xl font-bold text-center mb-8;
+}
+
+.form-title-light {
+  @apply text-blue-900;
+}
+
+.form-title-dark {
+  @apply text-blue-100;
+}
+
+.input-field {
+  @apply rounded-lg;
+}
+
+.input-field-light {
+  @apply bg-white border-gray-300 text-gray-900;
+}
+
+.input-field-dark {
+  @apply bg-gray-700 border-gray-600 text-white;
+}
+
+.input-label {
+  @apply font-medium;
+}
+
+.input-label-light {
+  @apply text-gray-700;
+}
+
+.input-label-dark {
+  @apply text-gray-200;
+}
+
+.submit-button {
+  @apply w-full py-3 px-4 rounded-lg font-semibold transition-colors duration-200;
+}
+
+.submit-button-light {
+  @apply bg-blue-600 hover:bg-blue-700 text-white;
+}
+
+.submit-button-dark {
+  @apply bg-blue-500 hover:bg-blue-400 text-white;
+}
+
+ 
+/* Light mode styles */
+.light-mode {
+  --input-background: #fff;
+  --input-color: #000;
+  --border-color: #ccc;
+  --label-color: #000;
+  --helper-text-color: #d32f2f;
+  --select-background: #fff;
+  --select-color: #000;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  --input-background: #333;
+  --input-color: #fff;
+  --border-color: rgba(255, 255, 255, 0.23);
+  --label-color: rgba(255, 255, 255, 0.7);
+  --helper-text-color: #ff4081;
+  --select-background: rgb(51, 51, 51);
+  --select-color: #fff;
+}
+
+/* FormControl styles */
+.form-control {
+  background-color: var(--input-background);
+  color: var(--input-color);
+}
+
+.form-control .MuiInputLabel-root {
+  color: var(--label-color);
+}
+
+.form-control .MuiOutlinedInput-root {
+  border-color: var(--border-color);
+}
+
+.form-control .MuiSelect-root {
+  background-color: var(--select-background);
+  color: var(--select-color);
+}
+
+.form-control .MuiFormHelperText-root {
+  color: var(--helper-text-color);
+}
+

@@ -42,7 +42,7 @@ const Navbar = () => {
         >
           <Button component={Link} href="/">
             <Image
-              loading="lazy"
+               priority 
               src="/logo.png"
               className="object-contain shrink-0 max-w-full aspect-[3.76] w-[244px]"
               alt="Company Logo"

@@ -21,7 +21,7 @@ import { schema } from "../dashboard/forms/validations/schema";
 import TitleForm from "../dashboard/forms/utils/TitleForm";
 import { RootState } from "../redux/store/store";
 import { scrollToTop } from "../utils/scroll";
-import { freeQoute } from "../redux/actions/freeQoateActions";
+import { freeQoute } from "../redux/actions/forms/freeQoateActions";
 import { BillingSection } from "../dashboard/forms/sections/BillingSection";
 
 const GetFreeQoate = () => {

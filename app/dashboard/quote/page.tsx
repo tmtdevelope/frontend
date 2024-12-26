@@ -1,11 +1,11 @@
 "use client";
 
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid  } from "@mui/material";
 import { useTheme } from "next-themes";
 
-import { services } from "./components/Services";
-import { ServiceCard } from "./components/ServiceCard";
-import TitleForm from "./forms/utils/TitleForm";
+import { services } from "../components/Services";
+import { ServiceCard } from "../components/ServiceCard";
+import TitleForm from "../forms/utils/TitleForm";
 
 export default function DashboardPage() {
   const { theme } = useTheme();

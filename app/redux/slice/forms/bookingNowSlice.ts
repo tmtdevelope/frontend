@@ -1,6 +1,6 @@
 // src/redux/slice/privatePaySlice.ts
 import { createSlice } from "@reduxjs/toolkit";
-import { bookingNow } from "../actions/bookingNowActions";
+import { bookingNow } from "../../actions/forms/bookingNowActions";
 
 const bookingNowSlice = createSlice({
   name: "bookingNow",

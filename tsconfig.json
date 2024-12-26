@@ -23,7 +23,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/contact", "app/redux/slice/formSlice.js", "app/Theme/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/contact", "app/redux/slice/formSlice.js", "app/Theme/page.jsx", "app/dashboard/calculator/page.jsx"],
   "exclude": ["node_modules"],
   "types": [
     "node",

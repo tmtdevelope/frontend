@@ -23,11 +23,11 @@ import { RemarksSection } from "../../forms/sections/RemarksSection";
 import { FileUploadSection } from "../../forms/sections/FileUploadSection";
 import { schema } from "../../forms/validations/schema";
 import { scrollToTop } from "@/app/utils/scroll";
-import { spacialPay } from "@/app/redux/actions/spacialPayActions";
+import { spacialPay } from "@/app/redux/actions/forms/spacialPayActions";
 import { RootState } from "@/app/redux/store/store";
 import { SubmitButton } from "../../forms/components/SubmitButton";
 import { ServiceSection } from "../../forms/sections/ServiceSection";
-import { privatePay } from "@/app/redux/actions/privatePayActions";
+import { privatePay } from "@/app/redux/actions/forms/privatePayActions";
 
 const PrivatePay = () => {
   const { theme } = useTheme();
@@ -39,8 +39,7 @@ const PrivatePay = () => {
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state);
-  console.log("state:", state);
-
+ 
   const {
     register,
     handleSubmit,

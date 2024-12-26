@@ -4,9 +4,7 @@ import { Providers } from "./Theme/provider";
 import Navbar from "./components/Header/Navbar";
 import Footer from "./components/Footer/Footer";
 import ClientWrapper from "./ClientWrapper";
-// import GoogleMapsScript from "./components/GoogleMapsScript";
-// import GoogleMapsScript from "./components/GoogleMapsScript"; // استيراد المكون
-
+  
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
@@ -33,15 +31,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ClientWrapper>
-        {/* <GoogleMapsScript /> */}
-          <Providers>
+           <Providers>
             <Navbar />
             <main>{children}</main>
             <Footer />
           </Providers>
         </ClientWrapper>
-        {/* تضمين مكون السكربت بعد تحميل المكونات الأخرى */}
-      </body>
+       </body>
     </html>
   );
 }

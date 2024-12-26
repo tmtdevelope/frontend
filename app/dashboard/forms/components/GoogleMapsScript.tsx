@@ -29,13 +29,17 @@ const GooglePlacesAutocomplete = ({
   useEffect(() => {
     loadGoogleMapsScript(() => {
       if (window.google && inputRef.current) {
-        const autocomplete = new google.maps.places.Autocomplete(inputRef.current, {
-          types: ["address"],
-          componentRestrictions: { country: "us" },
-        });
+        const autocomplete = new google.maps.places.Autocomplete(
+          inputRef.current,
+          {
+            types: ["address"],
+            componentRestrictions: { country: "us" },
+          }
+        );
 
         autocomplete.addListener("place_changed", () => {
           const place = autocomplete.getPlace();
+ 
           if (place?.geometry?.location) {
             const selectedPlace = {
               address: place.formatted_address || "",

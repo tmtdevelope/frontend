@@ -1,6 +1,6 @@
 // src/redux/slice/privatePaySlice.ts
 import { createSlice } from "@reduxjs/toolkit";
-import { privatePay } from "../actions/privatePayActions";
+import { privatePay } from "../../actions/forms/privatePayActions";
 
 const privatePaySlice = createSlice({
   name: "privatePay",

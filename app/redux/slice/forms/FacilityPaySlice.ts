@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { facilityPay } from "../actions/facilityPayAction";
+import { facilityPay } from "../../actions/forms/facilityPayAction";
 
 interface SpacialPayState {
   formData: Record<string, any> | null;

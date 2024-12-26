@@ -22,6 +22,8 @@ import {
 import { useFormTheme } from "../utils/theme";
 import { Controller } from "react-hook-form";
 import GooglePlacesAutocomplete from "../components/GoogleMapsScript";
+import { useState, useEffect, useCallback } from "react";
+import { calculateDistanceAndDuration } from "../utils/calculateDistanceAndDuration";
 
 export function TransportSection({
   register,
@@ -54,6 +56,39 @@ export function TransportSection({
       color: isDark ? "#ffffff" : "#000000",
     },
   };
+
+  const [distance, setDistance] = useState<string | null>(null);
+  const [duration, setDuration] = useState<string | null>(null);
+
+  const pickupAddress = watch("pickupAddress");
+  const dropoffAddress = watch("dropoffAddress");
+
+  const handlePlaceSelected = useCallback(async (
+    pickupAddress: string,
+    dropoffAddress: string
+  ) => {
+    if (pickupAddress && dropoffAddress) {
+      try {
+        const result = await calculateDistanceAndDuration(
+          pickupAddress,
+          dropoffAddress
+        );
+        console.log("Distance and Duration:", result);
+        setDistance(result.distance);
+        setDuration(result.duration);
+        setValue("distance", result.distance);
+        setValue("duration", result.duration);
+      } catch (error) {
+        console.error("Error calculating distance and duration:", error);
+      }
+    }
+  }, [setValue]);
+
+  useEffect(() => {
+    if (pickupAddress && dropoffAddress) {
+      handlePlaceSelected(pickupAddress, dropoffAddress);
+    }
+  }, [pickupAddress, dropoffAddress, handlePlaceSelected]);
 
   return renderFormSection({
     title: "Transport Details",
@@ -137,8 +172,6 @@ export function TransportSection({
                   label="Pickup Address *"
                   onPlaceSelected={(place) => {
                     setValue("pickupAddress", place.address);
-                    setValue("pickupLat", place.lat);
-                    setValue("pickupLng", place.lng);
                   }}
                   error={!!fieldState.error}
                   helperText={fieldState.error?.message ?? ""}
@@ -156,8 +189,6 @@ export function TransportSection({
                   label="Drop-off Address *"
                   onPlaceSelected={(place) => {
                     setValue("dropoffAddress", place.address);
-                    setValue("dropoffLat", place.lat);
-                    setValue("dropoffLng", place.lng);
                   }}
                   error={!!fieldState.error}
                   helperText={fieldState.error?.message ?? ""}

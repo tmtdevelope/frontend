@@ -1,14 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Container,
-  Paper,
-  Grid,
-  Typography,
-  Alert,
-  Box
-} from "@mui/material";
+import { Container, Paper, Grid, Typography, Alert, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { scrollToTop } from "@/app/utils/scroll";
@@ -16,7 +9,7 @@ import { useTheme } from "next-themes";
 import "../dashboard/forms/styles/form.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store/store";
-import { privatePay } from "@/app/redux/actions/privatePayActions";
+import { privatePay } from "@/app/redux/actions/forms/privatePayActions";
 import { ServiceSection } from "../dashboard/forms/sections/ServiceSection";
 import { SubmitButton } from "../dashboard/forms/components/SubmitButton";
 import TitleForm from "../dashboard/forms/utils/TitleForm";
@@ -25,7 +18,7 @@ import { FileUploadSection } from "../dashboard/forms/sections/FileUploadSection
 import { RemarksSection } from "../dashboard/forms/sections/RemarksSection";
 import { RequesterSection } from "../dashboard/forms/sections/RequesterSection";
 import { TransportSection } from "../dashboard/forms/sections/TransportSection";
- import { bookingNow } from "../redux/actions/bookingNowActions";
+import { bookingNow } from "../redux/actions/forms/bookingNowActions";
 import { PatientSection } from "../dashboard/forms/sections/PatientSection";
 
 const BookingNow = () => {
@@ -38,8 +31,6 @@ const BookingNow = () => {
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state);
-  console.log("state:", state);
-
   const {
     register,
     handleSubmit,
@@ -51,16 +42,11 @@ const BookingNow = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   const onSubmit = async (data: Record<string, any>): Promise<void> => {
-    console.log("data:", data);
-
-    try {
+     try {
       const formData = new FormData();
-
-       const formatDate = (date: string | undefined): string | null =>
+      const formatDate = (date: string | undefined): string | null =>
         date ? new Date(date).toISOString().split("T")[0] : null;
-
       const formatTime = (time: string | undefined): string | null =>
         time
           ? new Date(time).toLocaleTimeString("en-US", {
@@ -155,7 +141,6 @@ const BookingNow = () => {
       </Grid>
     </>
   );
-
   return (
     <Container className="form-container">
       <Paper
@@ -167,7 +152,7 @@ const BookingNow = () => {
           boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
         }}
       >
-             <Grid container spacing={2} sx={{ mb: 4 }}>
+        <Grid container spacing={2} sx={{ mb: 4 }}>
           <TitleForm title={" Booking Now"} primaryColor={primaryColor} />
         </Grid>
         {(successMsg || errorMsg) && (

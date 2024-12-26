@@ -17,14 +17,13 @@ import { StaffPhysicianSection } from "../../forms/sections/PhysicianInformation
 import { FormDataInsurance } from "../../forms/types/form";
 import { PatientSection } from "../../forms/sections/PatientSection";
 import { scrollToTop } from "@/app/utils/scroll";
-import { insurancePay } from "@/app/redux/actions/insurancePayActions";
+import { insurancePay } from "@/app/redux/actions/forms/insurancePayActions";
 const InsuranceSection = () => {
   const { theme } = useTheme();
   const isDarkTheme = theme === "dark";
   const primaryColor = isDarkTheme ? "#2563eb" : "#1E40AF";
   const state = useSelector((state) => state);
-  console.log("state", state);
-
+ 
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [fileUrls, setFileUrls] = useState<string[]>([]);

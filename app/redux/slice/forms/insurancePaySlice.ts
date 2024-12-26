@@ -1,37 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { spacialPay } from '../actions/spacialPayActions';
-
-interface SpacialPayState {
+import { insurancePay } from '../../actions/forms/insurancePayActions';
+ 
+interface InsuranceState {
   formData: Record<string, any> | null;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
 
-const initialState: SpacialPayState = {
+const initialState: InsuranceState = {
   formData: null,
   status: 'idle',
   error: null,
 };
 
-const spacialPaySlice = createSlice({
-  name: 'spacialPay',
+const insuranceSlice = createSlice({
+  name: 'insurance',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(spacialPay.pending, (state) => {
+      .addCase(insurancePay.pending, (state) => {
         state.status = 'loading';
         state.error = null;
       })
-      .addCase(spacialPay.fulfilled, (state, action) => {
+      .addCase(insurancePay.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.formData = action.payload;
       })
-      .addCase(spacialPay.rejected, (state, action) => {
+      .addCase(insurancePay.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload as string;
       });
   },
 });
 
-export default spacialPaySlice.reducer;
+export default insuranceSlice.reducer;

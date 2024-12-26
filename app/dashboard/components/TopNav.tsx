@@ -9,20 +9,10 @@ import {
   MenuItem,
   Avatar,
   Box,
-   Container,
+  Container,
 } from "@mui/material";
-import {
-  Person,
-   ExitToApp,
-  Dashboard,
-  MonetizationOn,
-  Business,
-  HealthAndSafety,
-  Star,
-} from "@mui/icons-material";
+import { Person, ExitToApp } from "@mui/icons-material";
 import { useRouter, usePathname } from "next/navigation";
- 
- 
 
 export function TopNav() {
   const router = useRouter();
@@ -63,16 +53,18 @@ export function TopNav() {
         transition: "all 0.3s ease-in-out",
       }}
     >
-      <Container >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between", py: 1 }}>
+      <Container>
+        <Toolbar
+          sx={{ display: "flex", justifyContent: "space-between", py: 1 }}
+        >
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-               ml: "auto",
+              ml: "auto",
             }}
           >
-             <IconButton
+            <IconButton
               size="large"
               onClick={handleMenu}
               sx={{
@@ -93,25 +85,25 @@ export function TopNav() {
             </IconButton>
 
             <Menu
-  anchorEl={anchorEl}
-  open={Boolean(anchorEl)}
-  onClose={handleClose}
-  transformOrigin={{ horizontal: "right", vertical: "top" }}
-  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-  PaperProps={{
-    sx: {
-      position: "absolute",  
-      minWidth: "200px",
-      maxWidth: "300px",
-      mt: 1,
-      borderRadius: "8px",
-    },
-  }}
->
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              transformOrigin={{ horizontal: "right", vertical: "top" }}
+              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+              PaperProps={{
+                sx: {
+                  position: "absolute",
+                  minWidth: "200px",
+                  maxWidth: "300px",
+                  mt: 1,
+                  borderRadius: "8px",
+                },
+              }}
+            >
               <MenuItem onClick={handleClose}>
                 <Person sx={{ mr: 2, fontSize: 20 }} /> Profile
               </MenuItem>
-             <MenuItem
+              <MenuItem
                 onClick={handleLogout}
                 sx={{
                   color: "var(--error-color)",

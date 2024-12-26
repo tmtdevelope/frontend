@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "https://npiregistry.cms.hhs.gov/api/:path*", // توجيه الطلبات إلى الـ API الأصلي
+        destination: "https://npiregistry.cms.hhs.gov/api/:path*",
       },
     ];
   },

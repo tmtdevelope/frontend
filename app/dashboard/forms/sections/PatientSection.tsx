@@ -17,6 +17,7 @@ export function PatientSection({
   renderFormSection,
 }: any) {
   const { theme } = useTheme();
+
   const isDarkTheme = theme === "dark";
   const currentDate = new Date();
   const { getInputStyles, inputProps, labelProps } = useFormTheme();

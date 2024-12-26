@@ -24,7 +24,7 @@ import { RemarksSection } from "../../forms/sections/RemarksSection";
 import { FileUploadSection } from "../../forms/sections/FileUploadSection";
 import { schema } from "../../forms/validations/schema";
 import { scrollToTop } from "@/app/utils/scroll";
-import { spacialPay } from "@/app/redux/actions/spacialPayActions";
+import { spacialPay } from "@/app/redux/actions/forms/spacialPayActions";
 import { RootState } from "@/app/redux/store/store";
 import { SubmitButton } from "../../forms/components/SubmitButton";
 
@@ -38,8 +38,6 @@ const SpecialPay = () => {
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state);
-
-  console.log("state:", state);
 
   const {
     register,
@@ -169,7 +167,10 @@ const SpecialPay = () => {
         }}
       >
         <Grid container spacing={2} sx={{ mb: 4 }}>
-          <TitleForm title="Special Service Coordination Form" primaryColor={primaryColor} />
+          <TitleForm
+            title="Special Service Coordination Form"
+            primaryColor={primaryColor}
+          />
         </Grid>
 
         {(successMsg || errorMsg) && (
@@ -193,7 +194,6 @@ const SpecialPay = () => {
               register={register}
               errors={errors}
               control={control}
-
               setValue={setValue}
               renderFormSection={renderFormSection}
             />
@@ -208,7 +208,7 @@ const SpecialPay = () => {
             <ServiceSection
               register={register}
               errors={errors}
-              control={control}  
+              control={control}
               setValue={setValue}
               watch={watch}
               renderFormSection={renderFormSection}

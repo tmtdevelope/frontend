@@ -17,7 +17,7 @@ export const loadGoogleMapsScript = (callback: () => void) => {
   isScriptLoading = true;
 
   const script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAWGXXyA36UH5iL-5JbTpRpljoLlAd-OB4&libraries=places&callback=initMap`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyC-YNcLiMoP3-Nala5AWJBdzQWE2GUKUMQ&libraries=places&callback=initMap`;
   script.async = true;
   script.defer = true;
   script.onload = () => {

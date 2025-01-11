@@ -1,4 +1,4 @@
- import { MobileTimePicker } from "@mui/x-date-pickers";
+import { MobileTimePicker } from "@mui/x-date-pickers";
 
 export function TimeInput({ label, value, onChange, error, inputStyles }: any) {
   return (

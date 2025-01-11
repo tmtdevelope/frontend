@@ -10,10 +10,10 @@ export const insurancePay = createAsyncThunk(
     } catch (error: any) {
       if (error.response && error.response.data) {
         return rejectWithValue(
-          error.response.data.message || "Error submitting form"
+          error.response.data.message || "Error submitting form",
         );
       }
       return rejectWithValue(error.message);
     }
-  }
+  },
 );

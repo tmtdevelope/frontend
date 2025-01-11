@@ -1,6 +1,9 @@
-import { ALLOWED_FILE_TYPES, MAX_FILE_SIZE } from '../constants/fileUpload';
+import { ALLOWED_FILE_TYPES, MAX_FILE_SIZE } from "../constants/fileUpload";
 
-export const validateFile = (file: File, type: 'documents' | 'images'): string | null => {
+export const validateFile = (
+  file: File,
+  type: "documents" | "images",
+): string | null => {
   if (!ALLOWED_FILE_TYPES[type].includes(file.type)) {
     return `Invalid file type: ${file.type}`;
   }

@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { freeQoute } from "../../actions/forms/freeQoateActions";
- 
+
 interface FreePayState {
   formData: Record<string, any> | null;
   status: "idle" | "loading" | "succeeded" | "failed";

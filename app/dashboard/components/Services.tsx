@@ -19,7 +19,7 @@ export const services = [
     path: "/dashboard/quote/facility-pay",
   },
   {
-    title: "Insurance Pay", 
+    title: "Insurance Pay",
     icon: InsurancePayIcon,
     color: "#F44336",
     path: "/dashboard/quote/insurance-pay",

@@ -37,7 +37,7 @@ const FacilityPay = () => {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state);
 
-   const {
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -50,7 +50,6 @@ const FacilityPay = () => {
   });
 
   const onSubmit = async (data: any) => {
-
     try {
       const formData = new FormData();
       const formatDate = (date: string | undefined): string | null =>
@@ -78,7 +77,6 @@ const FacilityPay = () => {
       if (formattedAppointmentTime)
         formData.append("appointmentTime", formattedAppointmentTime);
 
-
       Object.keys(data).forEach((key) => {
         if (
           ![
@@ -87,7 +85,6 @@ const FacilityPay = () => {
             "pickupTime",
             "appointmentTime",
           ].includes(key)
-
         ) {
           const value = data[key];
           if (value !== undefined && value !== null) {
@@ -96,19 +93,15 @@ const FacilityPay = () => {
         }
       });
 
-
       imageUrls.forEach((url, index) => {
         formData.append(`images[${index}]`, url);
       });
-
 
       fileUrls.forEach((url, index) => {
         formData.append(`documents[${index}]`, url);
       });
 
-
       const result = await dispatch(facilityPay(formData) as any);
-
 
       if (facilityPay.fulfilled.match(result)) {
         setSuccessMsg(result.payload.message || "Form submitted successfully!");

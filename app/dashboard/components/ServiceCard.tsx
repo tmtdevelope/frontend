@@ -17,6 +17,7 @@ export function ServiceCard({ service, isDarkTheme }: any) {
         backgroundColor: isDarkTheme ? "#1f2937" : "#f5f5f5",
         color: isDarkTheme ? "#fff" : "#000",
         transition: "transform 0.2s",
+        flexGrow: 1, 
         "&:hover": {
           transform: "translateY(-4px)",
         },
@@ -29,7 +30,12 @@ export function ServiceCard({ service, isDarkTheme }: any) {
           mb: 2,
         }}
       />
-      <Typography variant="h6" gutterBottom align="center">
+      <Typography
+        variant="h6"
+        gutterBottom
+        align="center"
+        sx={{ textAlign: "center" }}
+      >
         {service.title}
       </Typography>
       <Button
@@ -38,6 +44,7 @@ export function ServiceCard({ service, isDarkTheme }: any) {
         sx={{
           mt: "auto",
           bgcolor: service.color,
+          width: "100%", // تأكد من أن الزر يأخذ العرض الكامل
           "&:hover": {
             bgcolor: service.color,
             opacity: 0.9,

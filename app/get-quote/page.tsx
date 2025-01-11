@@ -36,7 +36,7 @@ const GetFreeQoate = () => {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state);
 
-   const {
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -50,11 +50,11 @@ const GetFreeQoate = () => {
 
   const onSubmit = async (data: any) => {
     console.log("data", data);
- 
+
     try {
       const formData = new FormData();
 
-       const formatDate = (date: string | undefined): string | null =>
+      const formatDate = (date: string | undefined): string | null =>
         date ? new Date(date).toISOString().split("T")[0] : null;
 
       const formatTime = (time: string | undefined): string | null =>

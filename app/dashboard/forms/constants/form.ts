@@ -2,6 +2,7 @@ export const tripTypes = [
   { value: "oneWay", label: "One Way" },
   { value: "roundTrip", label: "Round Trip" },
   { value: "waitReturn", label: "Driver Wait & Return" },
+  { value: "discharge", label: "Discharge" },
 ];
 
 export const serviceTypes = [
@@ -16,7 +17,10 @@ export const wheelchairSizes = [
   { value: "bariatric", label: "Bariatric Size" },
   { value: "Scooter", label: "Scooter & Power Chair" },
 ];
-
+export const needWheelchairOptions = [
+  { value: "yes", label: "Yes" },
+  { value: "no", label: "No" },
+];
 export const oxygenOptions = [
   { value: "yes", label: "Yes" },
   { value: "no", label: "No" },
@@ -29,7 +33,7 @@ export const assistanceTransportation = [
   { value: "yes", label: "Yes" },
   { value: "no", label: "No" },
 ];
- export const assistanceOptions = ["Caregiver", "Attendant", "Nurse"];
+export const assistanceOptions = ["Caregiver", "Attendant", "Nurse"];
 
 export const diagnosticCodes = [
   { code: "M62.81", description: "Muscle Weakness (Generalized)" },

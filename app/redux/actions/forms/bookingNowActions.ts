@@ -12,5 +12,5 @@ export const bookingNow = createAsyncThunk(
     } catch (error: any) {
       return rejectWithValue(error.response?.data || "Something went wrong");
     }
-  }
+  },
 );

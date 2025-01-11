@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { Grid, TextField } from '@mui/material';
-import { useFormTheme } from '../utils/theme';
+import { Grid, TextField } from "@mui/material";
+import { useFormTheme } from "../utils/theme";
 
 export function RequesterSection({ register, errors, renderFormSection }: any) {
   const { getInputStyles, inputProps, labelProps } = useFormTheme();
 
   return renderFormSection({
-    title: 'Requester Information',
+    title: "Requester Information",
     children: (
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
@@ -18,7 +18,9 @@ export function RequesterSection({ register, errors, renderFormSection }: any) {
             helperText={errors.requesterName?.message}
             InputProps={inputProps}
             InputLabelProps={labelProps}
-            {...register('requesterName', { required: 'Requester Name is required' })}
+            {...register("requesterName", {
+              required: "Requester Name is required",
+            })}
             sx={getInputStyles()}
           />
         </Grid>
@@ -28,7 +30,9 @@ export function RequesterSection({ register, errors, renderFormSection }: any) {
             label="Requester Phone Number *"
             error={!!errors.requesterPhone}
             helperText={errors.requesterPhone?.message}
-            {...register('requesterPhone', { required: 'Requester Phone Number is required' })}
+            {...register("requesterPhone", {
+              required: "Requester Phone Number is required",
+            })}
             InputProps={inputProps}
             InputLabelProps={labelProps}
             sx={getInputStyles()}
@@ -41,7 +45,9 @@ export function RequesterSection({ register, errors, renderFormSection }: any) {
             type="email"
             error={!!errors.requesterEmail}
             helperText={errors.requesterEmail?.message}
-            {...register('requesterEmail', { required: 'Requester Email is required' })}
+            {...register("requesterEmail", {
+              required: "Requester Email is required",
+            })}
             InputProps={inputProps}
             InputLabelProps={labelProps}
             sx={getInputStyles()}

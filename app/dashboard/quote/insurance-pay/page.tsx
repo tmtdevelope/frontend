@@ -5,7 +5,7 @@ import { Container, Paper, Grid, Typography, Alert, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useTheme } from "next-themes";
 import "../../forms/styles/form.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch  } from "react-redux";
 import TitleForm from "../../forms/utils/TitleForm";
 import { TransportSection } from "../../forms/sections/TransportSection";
 import { ServiceSection } from "../../forms/sections/ServiceSection";
@@ -22,8 +22,7 @@ const InsuranceSection = () => {
   const { theme } = useTheme();
   const isDarkTheme = theme === "dark";
   const primaryColor = isDarkTheme ? "#2563eb" : "#1E40AF";
-  const state = useSelector((state) => state);
- 
+  
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [fileUrls, setFileUrls] = useState<string[]>([]);

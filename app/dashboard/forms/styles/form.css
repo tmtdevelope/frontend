@@ -5,8 +5,7 @@
 .form-paper {
   @apply rounded-xl shadow-lg overflow-hidden;
 }
- 
- 
+
 .form-title {
   @apply text-2xl md:text-3xl font-bold text-center mb-8;
 }
@@ -55,9 +54,8 @@
   @apply bg-blue-500 hover:bg-blue-400 text-white;
 }
 
- 
 /* Light mode styles */
-.light-mode {
+/* .light-mode {
   --input-background: #fff;
   --input-color: #000;
   --border-color: #ccc;
@@ -67,8 +65,7 @@
   --select-color: #000;
 }
 
-/* Dark mode styles */
-.dark-mode {
+ .dark-mode {
   --input-background: #333;
   --input-color: #fff;
   --border-color: rgba(255, 255, 255, 0.23);
@@ -78,8 +75,7 @@
   --select-color: #fff;
 }
 
-/* FormControl styles */
-.form-control {
+ .form-control {
   background-color: var(--input-background);
   color: var(--input-color);
 }
@@ -99,5 +95,4 @@
 
 .form-control .MuiFormHelperText-root {
   color: var(--helper-text-color);
-}
-
+} */

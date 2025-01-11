@@ -1,10 +1,10 @@
 // Update the existing request types
 export const CategoryType = {
-  FACILITY: 'FACILITY',
-  INSURANCE: 'INSURANCE',
-  PRIVATE: 'PRIVATE',
-  SPECIAL: 'SPECIAL',
-  FREEPAY: 'FREEPAY',
+  FACILITY: "FACILITY",
+  INSURANCE: "INSURANCE",
+  PRIVATE: "PRIVATE",
+  SPECIAL: "SPECIAL",
+  FREEPAY: "FREEPAY",
 } as const;
 
 export interface BaseRequest {
@@ -34,11 +34,11 @@ export interface BaseRequest {
   tripType: string;
   passengerCount: number;
   dateOfBirth: string;
-  status: 'pending' | 'approved' | 'completed' | 'cancelled';
+  status: "pending" | "approved" | "completed" | "cancelled";
 }
 
 export interface FacilityRequest extends BaseRequest {
-  category: 'FACILITY';
+  category: "FACILITY";
   billingAddress: string;
   city: string;
   zipCode: string;
@@ -46,7 +46,7 @@ export interface FacilityRequest extends BaseRequest {
 }
 
 export interface InsuranceRequest extends BaseRequest {
-  category: 'INSURANCE';
+  category: "INSURANCE";
   staffPhysicianName: string;
   faxNumber: string;
   diagnosticCode: string;
@@ -56,24 +56,24 @@ export interface InsuranceRequest extends BaseRequest {
 }
 
 export interface PrivateRequest extends BaseRequest {
-  category: 'PRIVATE';
+  category: "PRIVATE";
 }
 
 export interface SpecialRequest extends BaseRequest {
-  category: 'SPECIAL';
+  category: "SPECIAL";
   needAssistance: string;
   selectedAssistances: string;
   stairsAssistance: string;
 }
 
 export interface FreePayRequest extends BaseRequest {
-  category: 'FREEPAY';
+  category: "FREEPAY";
   stairsAssistance?: string;
 }
 
-export type Request = 
-  | FacilityRequest 
-  | InsuranceRequest 
-  | PrivateRequest 
-  | SpecialRequest 
+export type Request =
+  | FacilityRequest
+  | InsuranceRequest
+  | PrivateRequest
+  | SpecialRequest
   | FreePayRequest;

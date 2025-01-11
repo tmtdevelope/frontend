@@ -114,17 +114,14 @@ export function StaffPhysicianSection({
     .filter(
       (item, index, self) =>
         self.findIndex(
-          (t) => t.code === item.code && t.description === item.description
-        ) === index
+          (t) => t.code === item.code && t.description === item.description,
+        ) === index,
     );
 
   return renderFormSection({
     title: "Staff/Physician Information",
     children: (
       <Grid container spacing={3}>
-
-
-
         <Grid item xs={12} md={6}>
           <Autocomplete
             options={diagnosticCodesWithKeys}
@@ -145,8 +142,7 @@ export function StaffPhysicianSection({
             }}
             getOptionLabel={(option) =>
               `${option.code} - ${option.description}`
-            }  
- 
+            }
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -165,23 +161,11 @@ export function StaffPhysicianSection({
               />
             )}
             onChange={(event, value) => {
-              // تخزين الكود فقط عند الاختيار
               const code = value?.code || "";
               setValue("diagnosticCode", code);
-             }}
+            }}
           />
         </Grid>
-
-
-
-
-
-
-
-
-
-
-
 
         <Grid item xs={12} md={6}>
           <Autocomplete
@@ -253,7 +237,9 @@ export function StaffPhysicianSection({
             label="Phone Number *"
             error={!!errors.phoneNumberNPI}
             helperText={errors.phoneNumberNPI?.message}
-            {...register("phoneNumberNPI",{ required: "Phone Number is required" })}
+            {...register("phoneNumberNPI", {
+              required: "Phone Number is required",
+            })}
             InputProps={inputProps}
             InputLabelProps={{
               ...labelProps,
@@ -269,7 +255,7 @@ export function StaffPhysicianSection({
             label="Fax Number *"
             error={!!errors.faxNumber}
             helperText={errors.faxNumber?.message}
-            {...register("faxNumber",{required: "Fax Number Is Required"})}
+            {...register("faxNumber", { required: "Fax Number Is Required" })}
             InputProps={inputProps}
             InputLabelProps={{
               ...labelProps,

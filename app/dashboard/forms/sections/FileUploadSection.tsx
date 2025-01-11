@@ -26,7 +26,7 @@ interface FileUploadSectionProps {
 
 const uploadToCloudinary = async (
   file: File,
-  folder: string
+  folder: string,
 ): Promise<string> => {
   if (
     !process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET ||
@@ -39,7 +39,7 @@ const uploadToCloudinary = async (
   formData.append("file", file);
   formData.append(
     "upload_preset",
-    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
   );
   formData.append("folder", folder); // Specify folder dynamically
 
@@ -48,7 +48,7 @@ const uploadToCloudinary = async (
     {
       method: "POST",
       body: formData,
-    }
+    },
   );
 
   const data = await response.json();
@@ -79,7 +79,7 @@ export function FileUploadSection({
 
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>,
-    type: "documents" | "images"
+    type: "documents" | "images",
   ): Promise<void> => {
     const fileList = event.target.files;
     if (!fileList) return;

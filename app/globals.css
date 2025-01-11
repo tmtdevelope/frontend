@@ -65,16 +65,18 @@
 }
 
 :root {
-  --icon-color-light: #000;
-  --icon-color-dark: #fff;
-}
-
-[data-theme="light"] {
   --background-color: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   --text-color: #000000;
   --border-color: rgba(0, 0, 0, 0.12);
   --bg-mui: #f4f6f8;
 }
+/* 
+[data-theme="light"] {
+  --background-color: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  --text-color: #000000;
+  --border-color: rgba(0, 0, 0, 0.12);
+  --bg-mui: #f4f6f8;
+} */
 
 [data-theme="dark"] {
   --background-color: linear-gradient(
@@ -87,7 +89,6 @@
   --border-color: rgba(255, 255, 255, 0.12);
   --bg-mui: #1f2937;
 }
- 
 
 body {
   margin-top: 80px;

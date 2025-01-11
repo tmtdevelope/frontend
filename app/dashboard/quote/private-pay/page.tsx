@@ -1,15 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Container,
-  Paper,
-  Grid,
-  Typography,
-  Alert,
-  Box,
-  Button,
-} from "@mui/material";
+import { Container, Paper, Grid, Typography, Alert, Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTheme } from "next-themes";
@@ -23,7 +15,6 @@ import { RemarksSection } from "../../forms/sections/RemarksSection";
 import { FileUploadSection } from "../../forms/sections/FileUploadSection";
 import { schema } from "../../forms/validations/schema";
 import { scrollToTop } from "@/app/utils/scroll";
-import { spacialPay } from "@/app/redux/actions/forms/spacialPayActions";
 import { RootState } from "@/app/redux/store/store";
 import { SubmitButton } from "../../forms/components/SubmitButton";
 import { ServiceSection } from "../../forms/sections/ServiceSection";
@@ -39,7 +30,7 @@ const PrivatePay = () => {
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state);
- 
+
   const {
     register,
     handleSubmit,
@@ -56,7 +47,7 @@ const PrivatePay = () => {
     try {
       const formData = new FormData();
 
-       const formatDate = (date: string | undefined): string | null =>
+      const formatDate = (date: string | undefined): string | null =>
         date ? new Date(date).toISOString().split("T")[0] : null;
 
       const formatTime = (time: string | undefined): string | null =>
@@ -165,7 +156,7 @@ const PrivatePay = () => {
           boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
         }}
       >
-            <Grid container spacing={2} sx={{ mb: 4 }}>
+        <Grid container spacing={2} sx={{ mb: 4 }}>
           <TitleForm title={"Private Pay"} primaryColor={primaryColor} />
         </Grid>
         {(successMsg || errorMsg) && (
@@ -188,7 +179,6 @@ const PrivatePay = () => {
             <PatientSection
               register={register}
               control={control}
-
               errors={errors}
               setValue={setValue}
               renderFormSection={renderFormSection}

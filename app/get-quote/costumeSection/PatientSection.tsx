@@ -1,22 +1,20 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
-import { Grid, TextField, Button } from "@mui/material";
+import React from "react";
+import { Controller } from "react-hook-form";
+import { Grid, TextField } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers";
 import { useTheme } from "next-themes";
-import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 import GooglePlacesAutocomplete from "@/app/dashboard/forms/components/GoogleMapsScript";
 import { useFormTheme } from "@/app/dashboard/forms/utils/theme";
- 
 
 export function PatientSection({
   register,
   errors,
   setValue,
-  control,  
+  control,
   renderFormSection,
 }: any) {
   const { theme } = useTheme();
@@ -24,7 +22,6 @@ export function PatientSection({
   const currentDate = new Date();
 
   const { getInputStyles, inputProps, labelProps } = useFormTheme();
-
 
   return renderFormSection({
     title: "Patient Information",
@@ -96,7 +93,7 @@ export function PatientSection({
             sx={getInputStyles()}
           />
         </Grid>
-         
+
         <Grid item xs={12} md={6}>
           <Controller
             name="address"

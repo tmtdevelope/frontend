@@ -1,7 +1,7 @@
 /** @format */
 
 export interface ServiceItem {
-	Icon: React.ElementType;
-	title: string;
-	description: string;
+  Icon: React.ElementType;
+  title: string;
+  description: string;
 }

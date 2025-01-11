@@ -4,10 +4,11 @@ import { Providers } from "./Theme/provider";
 import Navbar from "./components/Header/Navbar";
 import Footer from "./components/Footer/Footer";
 import ClientWrapper from "./ClientWrapper";
-  
+import FooterWrapper from "./FooterWrapper";
+
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   ),
   title: "TrustMTrans - Professional Translation Services",
   description:
@@ -31,13 +32,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ClientWrapper>
-           <Providers>
+          <Providers>
             <Navbar />
             <main>{children}</main>
-            <Footer />
+            <FooterWrapper />
           </Providers>
         </ClientWrapper>
-       </body>
+      </body>
     </html>
   );
 }

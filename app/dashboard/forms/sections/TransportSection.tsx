@@ -22,7 +22,7 @@ import {
 import { useFormTheme } from "../utils/theme";
 import { Controller } from "react-hook-form";
 import GooglePlacesAutocomplete from "../components/GoogleMapsScript";
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { calculateDistanceAndDuration } from "../utils/calculateDistanceAndDuration";
 
 export function TransportSection({
@@ -57,32 +57,28 @@ export function TransportSection({
     },
   };
 
-  const [distance, setDistance] = useState<string | null>(null);
-  const [duration, setDuration] = useState<string | null>(null);
-
   const pickupAddress = watch("pickupAddress");
   const dropoffAddress = watch("dropoffAddress");
 
-  const handlePlaceSelected = useCallback(async (
-    pickupAddress: string,
-    dropoffAddress: string
-  ) => {
-    if (pickupAddress && dropoffAddress) {
-      try {
-        const result = await calculateDistanceAndDuration(
-          pickupAddress,
-          dropoffAddress
-        );
-        console.log("Distance and Duration:", result);
-        setDistance(result.distance);
-        setDuration(result.duration);
-        setValue("distance", result.distance);
-        setValue("duration", result.duration);
-      } catch (error) {
-        console.error("Error calculating distance and duration:", error);
+  const handlePlaceSelected = useCallback(
+    async (pickupAddress: string, dropoffAddress: string) => {
+      if (pickupAddress && dropoffAddress) {
+        try {
+          const result = await calculateDistanceAndDuration(
+            pickupAddress,
+            dropoffAddress,
+          );
+          console.log("Distance and Duration:", result);
+
+          setValue("distance", result.distance);
+          setValue("duration", result.duration);
+        } catch (error) {
+          console.error("Error calculating distance and duration:", error);
+        }
       }
-    }
-  }, [setValue]);
+    },
+    [setValue],
+  );
 
   useEffect(() => {
     if (pickupAddress && dropoffAddress) {
@@ -179,6 +175,7 @@ export function TransportSection({
               )}
             />
           </Grid>
+
           <Grid item xs={12} md={6}>
             <Controller
               name="dropoffAddress"
@@ -229,11 +226,14 @@ export function TransportSection({
           <Grid item xs={12} md={6}>
             <TextField
               fullWidth
-              label="Room Number"
-              {...register("roomNumber")}
+              label="Room Number *"
+              {...register("roomNumber", {
+                required: "Room Number is required",
+              })}
               sx={inputStyles}
             />
           </Grid>
+
           <Grid
             item
             xs={12}

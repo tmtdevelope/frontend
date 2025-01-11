@@ -1,8 +1,11 @@
-import api from '@/app/common/api';
- 
-export const calculateDistanceAndDuration = async (origin: string, destination: string) => {
+import api from "@/app/common/api";
+
+export const calculateDistanceAndDuration = async (
+  origin: string,
+  destination: string,
+) => {
   try {
-    const response = await api.get('/calculate', {
+    const response = await api.get("/calculate", {
       params: {
         origin,
         destination,
@@ -10,7 +13,7 @@ export const calculateDistanceAndDuration = async (origin: string, destination: 
     });
     return response.data;
   } catch (error) {
-    console.error('Error in calculateDistanceAndDuration:', error);
+    console.error("Error in calculateDistanceAndDuration:", error);
     throw error;
   }
 };

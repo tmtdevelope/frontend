@@ -1,5 +1,5 @@
 export interface ServiceCardProps {
-	title: string;
-	description: string;
-	Icon: React.ElementType;
+  title: string;
+  description: string;
+  Icon: React.ElementType;
 }

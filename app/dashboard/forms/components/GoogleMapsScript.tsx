@@ -13,6 +13,7 @@ interface GooglePlacesAutocompleteProps {
     lat: number;
     lng: number;
   }) => void;
+  defaultValue?: string;
 }
 
 const GooglePlacesAutocomplete = ({
@@ -20,11 +21,16 @@ const GooglePlacesAutocomplete = ({
   onPlaceSelected,
   error,
   helperText,
+  defaultValue = "",
 }: GooglePlacesAutocompleteProps) => {
   const { getInputStyles, inputProps, labelProps } = useFormTheme();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(defaultValue);
+
+  useEffect(() => {
+    setInputValue(defaultValue);
+  }, [defaultValue]);
 
   useEffect(() => {
     loadGoogleMapsScript(() => {
@@ -34,12 +40,12 @@ const GooglePlacesAutocomplete = ({
           {
             types: ["address"],
             componentRestrictions: { country: "us" },
-          }
+          },
         );
 
         autocomplete.addListener("place_changed", () => {
           const place = autocomplete.getPlace();
- 
+
           if (place?.geometry?.location) {
             const selectedPlace = {
               address: place.formatted_address || "",

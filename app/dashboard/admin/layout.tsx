@@ -1,26 +1,21 @@
 "use client";
 
-import { Box, Container } from "@mui/material";
-import Sidebar from "../components/Sidebar";
- const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    return (
-        <>
-            <Sidebar />
-            <Container
-                component="main"
-                sx={{
-                    paddin: 0,
-                    flexGrow: 1,
-                    display: "flex",
-                    height: "100vh"
-                }}
-            >
-                <Box sx={{ display: "flex", flexDirection: "column", marginLeft: 4, width: "100%" }}>
-                    {children}
-                </Box>
-            </Container>
-        </>
-    );
+import { Box } from "@mui/material";
+import { Sidebar } from "./components/layout/Sidebar";
+import { ReactNode, useEffect, useState } from "react";
+
+const Layout = ({ children }: { children: ReactNode }) => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+  return (
+    <Box sx={{ display: "flex", minHeight: "100vh" }}>
+      {open && <Sidebar />}
+      {children}
+    </Box>
+  );
 };
 
 export default Layout;

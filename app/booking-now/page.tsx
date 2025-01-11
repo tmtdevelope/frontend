@@ -43,7 +43,7 @@ const BookingNow = () => {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data: Record<string, any>): Promise<void> => {
-     try {
+    try {
       const formData = new FormData();
       const formatDate = (date: string | undefined): string | null =>
         date ? new Date(date).toISOString().split("T")[0] : null;
@@ -95,13 +95,9 @@ const BookingNow = () => {
 
       const result = await dispatch(bookingNow(formData) as any);
 
-      if (privatePay.fulfilled.match(result)) {
+      if (privatePay.fulfilled.match(result.payload)) {
         setSuccessMsg(result.payload.message || "Form submitted successfully!");
         setErrorMsg("");
-        scrollToTop();
-      } else {
-        setErrorMsg("Something went wrong. Please try again.");
-        setSuccessMsg("");
         scrollToTop();
       }
     } catch (error) {

@@ -1,12 +1,12 @@
 {
-	"name": "TMT",
-	"short_name": "TMT",
-	"start_url": "/",
-	"display": "standalone",
-	"icons": [
-		{
-			"src": "/logo.png",
-			"type": "image/png"
-		}
-	]
+  "name": "TMT",
+  "short_name": "TMT",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "type": "image/png"
+    }
+  ]
 }

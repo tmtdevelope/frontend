@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { Grid, TextField } from '@mui/material';
- import { useFormTheme } from '../utils/theme';
+import { Grid, TextField } from "@mui/material";
+import { useFormTheme } from "../utils/theme";
 export function RemarksSection({ register, renderFormSection }: any) {
   const { getInputStyles, inputProps, labelProps } = useFormTheme();
 
   return renderFormSection({
-    title: 'Remarks',
+    title: "Remarks",
     children: (
       <Grid item xs={12}>
         <TextField
@@ -14,7 +14,7 @@ export function RemarksSection({ register, renderFormSection }: any) {
           multiline
           rows={4}
           label="Additional Notes"
-          {...register('remarks')}
+          {...register("remarks")}
           InputProps={inputProps}
           InputLabelProps={labelProps}
           sx={getInputStyles()}

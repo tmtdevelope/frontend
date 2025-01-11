@@ -1,4 +1,3 @@
-
 export interface TimePickerBaseProps {
   value: string | null;
   onChange: (value: string | null) => void;
@@ -10,7 +9,7 @@ export interface CustomTimePickerProps extends TimePickerBaseProps {
   label: string;
 }
 
-export type TimeView = 'hours' | 'minutes' | 'seconds';
+export type TimeView = "hours" | "minutes" | "seconds";
 
 export interface TimePickerSlotProps {
   textField: {

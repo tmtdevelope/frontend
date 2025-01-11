@@ -18,6 +18,7 @@ import {
   serviceTypes,
   stairsAssistanceOptions,
   wheelchairSizes,
+  needWheelchairOptions,
 } from "../constants/form";
 import { FormSectionProps } from "../types/form";
 
@@ -39,7 +40,7 @@ const renderSelectField = (
   value: string,
   inputProps: any,
   labelProps: any,
-  isDarkTheme: boolean
+  isDarkTheme: boolean,
 ) => {
   return (
     <FormControl fullWidth>
@@ -79,8 +80,8 @@ const renderSelectField = (
 export function ServiceSection({
   register,
   errors,
-  setValue,
   control,
+  setValue,
   watch,
   renderFormSection,
 }: FormSectionProps) {
@@ -157,7 +158,6 @@ export function ServiceSection({
                   name="wheelchairSize"
                   control={control}
                   defaultValue=""
-                  rules={{ required: "Wheelchair size is required" }}
                   render={({ field }) => (
                     <RadioGroup
                       aria-labelledby="demo-radio-buttons-group-label"
@@ -176,11 +176,60 @@ export function ServiceSection({
                     </RadioGroup>
                   )}
                 />
-                {errors.wheelchairSize && (
-                  <FormHelperText sx={{ color: "error.main" }}>
-                    {errors.wheelchairSize.message}
-                  </FormHelperText>
-                )}
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} md={6}>
+              <FormControl
+                fullWidth
+                error={!!errors?.needsWheelchair}
+                sx={{
+                  ...getInputStyles(),
+                  ...inputLabelStyles(isDarkTheme),
+                  ...outlinedInputStyles(isDarkTheme),
+                }}
+              >
+                <InputLabel {...labelProps}>
+                  Do you need a rental wheelchair?
+                </InputLabel>
+                <Controller
+                  name="needsWheelchair"
+                  control={control}
+                  render={({ field }) => (
+                    <Select
+                      label="Do you need a rental wheelchair?"
+                      value={field.value || ""}
+                      onChange={(e) => {
+                        field.onChange(e);
+                        setValue("needsWheelchair", e.target.value);
+                      }}
+                      sx={baseSelectStyles(isDarkTheme)}
+                      MenuProps={{
+                        PaperProps: {
+                          sx: {
+                            bgcolor: isDarkTheme ? "rgb(51, 51, 51)" : "#fff",
+                          },
+                        },
+                      }}
+                    >
+                      {needWheelchairOptions.map((option) => (
+                        <MenuItem
+                          key={option.value}
+                          value={option.value}
+                          sx={{
+                            ...baseMenuItemStyles(isDarkTheme),
+                            backgroundColor: isDarkTheme
+                              ? "rgb(51, 51, 51)"
+                              : "#fff",
+                          }}
+                        >
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  )}
+                />
+                {/* إزالة رسالة الخطأ إذا لم يكن الحقل مطلوبًا */}
               </FormControl>
             </Grid>
           </>
@@ -196,7 +245,7 @@ export function ServiceSection({
             stairsAssistance,
             inputProps,
             labelProps,
-            isDarkTheme
+            isDarkTheme,
           )}
           {errors?.stairsAssistance && (
             <FormHelperText sx={{ color: "error.main" }}>
@@ -210,9 +259,7 @@ export function ServiceSection({
               fullWidth
               type="number"
               label="Number of Assistants Needed *"
-              {...register("assistantsCount", {
-                required: "Number of Assistants is required",
-              })}
+              {...register("assistantsCount")}
               InputProps={inputProps}
               InputLabelProps={labelProps}
               sx={getInputStyles()}
@@ -274,9 +321,7 @@ export function ServiceSection({
               fullWidth
               type="number"
               label="Oxygen Flow Rate (L/min) *"
-              {...register("oxygenFlowRate", {
-                required: "Oxygen Flow Rate is required",
-              })}
+              {...register("oxygenFlowRate")}
               InputProps={inputProps}
               InputLabelProps={labelProps}
               sx={getInputStyles()}

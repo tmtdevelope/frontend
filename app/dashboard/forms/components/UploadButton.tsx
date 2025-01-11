@@ -1,17 +1,22 @@
-'use client';
+"use client";
 
-import { Button } from '@mui/material';
-import { useFormTheme } from '../utils/theme';
-import { ALLOWED_FILE_TYPES } from '../constants/fileUpload';
+import { Button } from "@mui/material";
+import { useFormTheme } from "../utils/theme";
+import { ALLOWED_FILE_TYPES } from "../constants/fileUpload";
 
 interface UploadButtonProps {
   icon: React.ReactNode;
   label: string;
   onUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  type: 'documents' | 'images';
+  type: "documents" | "images";
 }
 
-export function UploadButton({ icon, label, onUpload, type }: UploadButtonProps) {
+export function UploadButton({
+  icon,
+  label,
+  onUpload,
+  type,
+}: UploadButtonProps) {
   const { isDarkTheme } = useFormTheme();
 
   return (
@@ -22,10 +27,14 @@ export function UploadButton({ icon, label, onUpload, type }: UploadButtonProps)
       fullWidth
       sx={{
         height: 56,
-        borderColor: isDarkTheme ? 'rgba(255, 255, 255, 0.23)' : 'rgba(0, 0, 0, 0.23)',
-        color: isDarkTheme ? '#fff' : 'inherit',
-        '&:hover': {
-          borderColor: isDarkTheme ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.4)',
+        borderColor: isDarkTheme
+          ? "rgba(255, 255, 255, 0.23)"
+          : "rgba(0, 0, 0, 0.23)",
+        color: isDarkTheme ? "#fff" : "inherit",
+        "&:hover": {
+          borderColor: isDarkTheme
+            ? "rgba(255, 255, 255, 0.4)"
+            : "rgba(0, 0, 0, 0.4)",
         },
       }}
     >
@@ -34,7 +43,7 @@ export function UploadButton({ icon, label, onUpload, type }: UploadButtonProps)
         type="file"
         hidden
         multiple
-        accept={ALLOWED_FILE_TYPES[type].join(',')}
+        accept={ALLOWED_FILE_TYPES[type].join(",")}
         onChange={onUpload}
       />
     </Button>

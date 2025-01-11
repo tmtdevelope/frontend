@@ -1,20 +1,24 @@
+"use client";
 
-'use client';
+import { Grid, TextField } from "@mui/material";
+import { useFormTheme } from "../utils/theme";
+import { FormSectionProps } from "../types/form";
+import { Controller } from "react-hook-form";
+import GooglePlacesAutocomplete from "../components/GoogleMapsScript";
 
-import { Grid, TextField } from '@mui/material';
-import { useFormTheme } from '../utils/theme';
-import { FormSectionProps } from '../types/form';
-import { Controller } from 'react-hook-form';
-import GooglePlacesAutocomplete from '../components/GoogleMapsScript';
-
-export function BillingSection({ register, renderFormSection , control, setValue}: FormSectionProps) {
+export function BillingSection({
+  register,
+  renderFormSection,
+  control,
+  setValue,
+}: FormSectionProps) {
   const { getInputStyles, inputProps, labelProps } = useFormTheme();
 
   return renderFormSection({
-    title: 'Billing Information',
+    title: "Billing Information",
     children: (
       <Grid container spacing={3}>
-     <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6}>
           <Controller
             name="billingAddress"
             control={control}
@@ -24,8 +28,6 @@ export function BillingSection({ register, renderFormSection , control, setValue
                 label="Billing Address *"
                 onPlaceSelected={(place) => {
                   setValue("billingAddress", place.address);
-                  setValue("billingLat", place.lat);
-                  setValue("billingLng", place.lng);
                 }}
                 error={!!fieldState.error}
                 helperText={fieldState.error?.message ?? ""}
@@ -33,7 +35,6 @@ export function BillingSection({ register, renderFormSection , control, setValue
             )}
           />
         </Grid>
-
 
         <Grid item xs={12} md={6}>
           <Controller
@@ -45,8 +46,6 @@ export function BillingSection({ register, renderFormSection , control, setValue
                 label="City *"
                 onPlaceSelected={(place: any) => {
                   setValue("city", place.address);
-                  setValue("cityLat", place.lat);
-                  setValue("cityLng", place.lng);
                 }}
                 error={!!fieldState.error}
                 helperText={fieldState.error?.message ?? ""}
@@ -59,7 +58,7 @@ export function BillingSection({ register, renderFormSection , control, setValue
           <TextField
             fullWidth
             label="Zip Code"
-            {...register('zipCode')}
+            {...register("zipCode")}
             InputProps={inputProps}
             InputLabelProps={labelProps}
             sx={getInputStyles()}
@@ -71,7 +70,7 @@ export function BillingSection({ register, renderFormSection , control, setValue
             fullWidth
             label="Email"
             type="email"
-            {...register('email')}
+            {...register("email")}
             InputProps={inputProps}
             InputLabelProps={labelProps}
             sx={getInputStyles()}

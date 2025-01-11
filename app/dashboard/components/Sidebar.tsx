@@ -32,7 +32,6 @@ const menuItems = [
   { text: "Users", icon: <People />, path: "/dashboard/admin/users" },
   { text: "Logout", icon: <Logout />, path: "/auth/login" },
 ];
-//D:\TMT Project\frontend\app\dashboard\admin
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -103,7 +102,10 @@ export default function Sidebar() {
             </ListItemIcon>
             <ListItemText
               primary={item.text}
-              sx={{ opacity: open ? 1 : 0, color: theme === "dark" ? "white" : "inherit" }}
+              sx={{
+                opacity: open ? 1 : 0,
+                color: theme === "dark" ? "white" : "inherit",
+              }}
             />
           </ListItem>
         ))}

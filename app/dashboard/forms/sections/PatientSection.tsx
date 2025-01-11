@@ -72,7 +72,7 @@ export function PatientSection({
             label="Patient ID *"
             error={!!errors.patientID?.message}
             helperText={errors.patientID?.message}
-            {...register("patientID", { requires: "Patient ID is required" })}
+            {...register("patientID")}
             InputProps={inputProps}
             InputLabelProps={labelProps}
             sx={getInputStyles()}

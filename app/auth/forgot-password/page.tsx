@@ -15,8 +15,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import logo from "../../../public/logo.png";
- import { useFormTheme } from "@/app/dashboard/forms/utils/theme";
+  import { useFormTheme } from "@/app/dashboard/forms/utils/theme";
 import { useDispatch, useSelector } from "react-redux";
 import {
   forgotPassword,
@@ -25,7 +24,8 @@ import {
 } from "@/app/redux/slice/users/userSlice";
 import { AppDispatch, RootState } from "@/app/redux/store/store";
 import { useEffect, useState } from "react";
-
+import { IMAGES } from "@/app/utils/images";
+ 
 // Validation schema
 const schema = yup.object().shape({
   email: yup
@@ -118,7 +118,7 @@ export default function ForgotPasswordForm() {
           }}
         >
           <Image
-            src={logo}
+            src={IMAGES.light}
             alt="Logo"
             width={300}
             loading="lazy"

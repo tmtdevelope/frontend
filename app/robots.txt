@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /dashboard/admin/
+Disallow: /dashboard/admin/requests/
+Disallow: /dashboard/admin/users/
+Disallow: /dashboard/quote/special-pay/
+Sitemap: https://www.trustmtrans.com/sitemap.xml

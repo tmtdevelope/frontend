@@ -23,16 +23,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/contact",
-    "app/redux/slice/formSlice.js",
-    "app/Theme/page.jsx",
-    "app/dashboard/calculator/page.jsx"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "public"],
   "exclude": ["node_modules"],
   "types": [
     "node",

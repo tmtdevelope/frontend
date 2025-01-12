@@ -1,6 +1,4 @@
-/** @format */
-"use client";
-
+  
 import Hero from "../components/Hero/Hero";
 import React from "react";
 import Services from "../components/Services/Services";

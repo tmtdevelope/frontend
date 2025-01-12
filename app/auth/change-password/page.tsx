@@ -15,8 +15,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import logo from "../../../public/logo.png";
-import { useRouter } from "next/navigation";
+ import { useRouter } from "next/navigation";
 import { useFormTheme } from "@/app/dashboard/forms/utils/theme";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +25,7 @@ import {
   clearMessage,
 } from "@/app/redux/slice/users/userSlice";
 import { AppDispatch, RootState } from "@/app/redux/store/store";
+import { IMAGES } from "@/app/utils/images";
 
 // Validation schema
 const schema = yup.object().shape({
@@ -132,7 +132,7 @@ export default function ChangePasswordForm() {
           }}
         >
           <Image
-            src={logo}
+            src={IMAGES.light}
             alt="Logo"
             width={300}
             loading="lazy"

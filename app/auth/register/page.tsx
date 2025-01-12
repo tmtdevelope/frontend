@@ -20,10 +20,10 @@ import {
 import { useFormTheme } from "@/app/dashboard/forms/utils/theme";
 import { schema } from "./validators";
 import Image from "next/image";
-import logo from "../../../public/logo.png";
-import { JobTitleSelect } from "../components/JobTitleSelect";
+ import { JobTitleSelect } from "../components/JobTitleSelect";
 import { AddressInput } from "../components/AddressInput";
 import SuccessPopup from "../components/SuccessPopup";
+import { IMAGES } from "@/app/utils/images";
 
 interface FormData {
   firstName: string;
@@ -115,12 +115,12 @@ export default function RegisterForm() {
           }}
         >
           <Image
-            src={logo}
+            src={IMAGES.light}
             alt="Logo"
             width={300}
             loading="lazy"
             height={200}
-          />
+           />
         </Box>
 
         <Typography

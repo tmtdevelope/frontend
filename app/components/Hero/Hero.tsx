@@ -1,10 +1,10 @@
 /** @format */
-"use client";
-import React from "react";
+ import React from "react";
 import { Container, Typography, Box } from "@mui/material";
 import HeroButtons from "./HeroButtons";
-import FeatureGrid from "./FeatureCard";
+import FeatureGrid from "./FeatureGrid";  
 import ContactInfo from "./ContactInfo";
+
 const HeroSection = () => {
   return (
     <section className="py-16">
@@ -28,7 +28,7 @@ const HeroSection = () => {
               background: "linear-gradient(to right, #1976d2, #42a5f5)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              color: { xs: "inherit", dark: "#fff" },
+              color: "inherit",
               mb: 3,
             }}
           >

@@ -2,22 +2,22 @@ import React from "react";
 import { Grid, Box, Typography, IconButton } from "@mui/material";
 import { features } from "./Data";
 
-const FeatureGrid = () => {
+const FeatureGrid = React.memo(() => {
   return (
     <Grid
       container
       spacing={4}
       sx={{
-        flexWrap: "wrap", // Ensures wrapping of items
-        justifyContent: { xs: "center", md: "space-between" }, // Center items on small screens
+        flexWrap: "wrap",
+        justifyContent: { xs: "center", md: "space-between" },
       }}
     >
       {features.map((feature, index) => (
         <Grid
           item
-          xs={12} // Full width on small screens
-          sm={6} // Half width on medium screens
-          md={4} // One-third width on larger screens
+          xs={12}
+          sm={6}
+          md={4}
           key={index}
         >
           <Box
@@ -28,20 +28,21 @@ const FeatureGrid = () => {
               padding: 2,
               borderRadius: 2,
               backdropFilter: "blur(6px)",
-              backgroundColor: "rgba(41, 128, 185, 0.1)", // Light background color
-              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+              backgroundColor: "rgba(41, 128, 185, 0.1)",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
               transition: "transform 0.3s ease",
               "&:hover": {
-                transform: "scale(1.05)", // Slight zoom effect on hover
+                transform: "scale(1.05)",
               },
-              textAlign: { xs: "center", md: "left" }, // Center text on small screens
-              width: "100%", // Ensure the box fits its container
+              textAlign: { xs: "center", md: "left" },
+              width: "100%",
             }}
           >
             <IconButton
               sx={{
                 color: "#2980b9",
               }}
+              aria-label={feature.title}
             >
               {feature.icon}
             </IconButton>
@@ -56,6 +57,6 @@ const FeatureGrid = () => {
       ))}
     </Grid>
   );
-};
+});
 
 export default FeatureGrid;

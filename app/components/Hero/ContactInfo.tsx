@@ -23,7 +23,7 @@ const ContactInfo = () => {
       >
         <Grid item>
           <Link
-            href="tel:+18886604441"
+            href="tel:+16507999921"
             display="flex"
             alignItems="center"
             sx={{
@@ -43,7 +43,7 @@ const ContactInfo = () => {
                 color: theme === "dark" ? "#fff" : "text.primary",
               }}
             >
-              +1 (888) 660-4441
+              +1 (650) 799-9921
             </Typography>
           </Link>
         </Grid>

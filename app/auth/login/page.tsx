@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import logo from "../../../public/logo.png";
 import { useRouter } from "next/navigation";
 import { useFormTheme } from "@/app/dashboard/forms/utils/theme";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +22,7 @@ import { AppDispatch } from "@/app/redux/store/store";
 import { useEffect, useState } from "react";
 import { ROLES_USER } from "@/app/dashboard/admin/constants/category";
 import { getUserDetailsAction } from "@/app/redux/actions/users/getUserDetailsAction";
+import { IMAGES } from "@/app/utils/images";
 
 // Validation schema
 const schema = yup.object().shape({
@@ -140,7 +140,7 @@ export default function LoginForm() {
           }}
         >
           <Image
-            src={logo}
+            src={IMAGES.light}
             alt="Logo"
             width={300}
             loading="lazy"

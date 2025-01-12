@@ -1,15 +1,7 @@
 import type { NextConfig } from "next";
+import withBundleAnalyzer from "@next/bundle-analyzer";
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: "https://npiregistry.cms.hhs.gov/api/:path*",
-      },
-    ];
-  },
-
   images: {
     remotePatterns: [
       {
@@ -19,6 +11,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+   reactStrictMode: true,
+  swcMinify: true,
+  compress: true,
 };
 
-export default nextConfig;
+export default withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true", 
+})(nextConfig);

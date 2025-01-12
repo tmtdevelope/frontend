@@ -1,17 +1,18 @@
-/** @format */
-
-"use client";
 import {
   Container,
   Typography,
   Box,
-  Button,
   List,
   ListItem,
   ListItemText,
-  Link,
 } from "@mui/material";
 import { privacyPolicySections } from "./Data";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "Privacy Policy for Trust Medical Transportation (TMT)",
+};
 
 const PrivacyPolicy = () => {
   return (

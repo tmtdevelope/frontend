@@ -1,7 +1,6 @@
 /** @format */
 
-import Navbar from "./components/Header/Navbar";
-import Home from "./home/page";
+ import Home from "./home/page";
 
 function App() {
   return (

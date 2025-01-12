@@ -1,13 +1,13 @@
 {
-  "name": "TMT",
+  "name": "TrustMTrans",
   "short_name": "TMT",
   "start_url": "/",
   "display": "standalone",
   "icons": [
     {
-      "src": "/logo.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
     }
   ]
 }

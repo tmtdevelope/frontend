@@ -12,17 +12,17 @@ const TitleSections = ({ text }: { text: string }) => {
         textAlign: "center",
         width: "100%",
         mx: "auto",
-        py: 10,
+        py: { xs: 4, md: 6 },
       }}
     >
       <Typography
         variant="h2"
         sx={{
-          fontSize: { xs: "50px", md: "70px" },
+          fontSize: { xs: "40px", sm: "50px", md: "70px" },
           fontWeight: "bold",
           letterSpacing: "0.1em",
           opacity: 0.1,
-          color: "#4f46e5",
+          color: "primary.main",
         }}
       >
         {title}
@@ -31,14 +31,14 @@ const TitleSections = ({ text }: { text: string }) => {
       <Typography
         variant="h3"
         sx={{
-          fontSize: { xs: "35px", md: "40px" },
+          fontSize: { xs: "24px", sm: "30px", md: "40px" },
           position: "absolute",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           fontWeight: "700",
           letterSpacing: 1.5,
-          color: "#1d4ed8",
+          color: "primary.dark",
           textTransform: "uppercase",
         }}
       >

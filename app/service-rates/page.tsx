@@ -7,25 +7,28 @@ import {
   ListItemText,
 } from "@mui/material";
 
+const serviceRates = [
+  { description: "Vans for up to 4 passengers: $100 per hour (minimum 8 hours)" },
+];
+
 const ServiceRates = () => {
   return (
-    <Container maxWidth="md" sx={{ padding: "40px", marginTop: "40px" }}>
-      <Typography
-        variant="h4"
-        sx={{ fontWeight: "bold", marginBottom: "20px" }}
-      >
+    <Container maxWidth="md" sx={{ padding: { xs: "20px", md: "40px" }, marginTop: { xs: "20px", md: "40px" } }}>
+      <Typography variant="h4" sx={{ fontWeight: "bold", marginBottom: "20px" }}>
         Trust Medical Transportation (TMT)
       </Typography>
       <Typography variant="h5" sx={{ marginBottom: "20px" }}>
         Service Rates
       </Typography>
-      <List sx={{ marginBottom: "20px" }}>
-        <ListItem>
-          <ListItemText
-            primary="Vans for up to 4 passengers: $100 per hour (minimum 8 hours)"
-            sx={{ fontSize: "18px", color: "#348" }}
-          />
-        </ListItem>
+      <List sx={{ marginBottom: "20px" }} aria-label="Service rates">
+        {serviceRates.map((rate, index) => (
+          <ListItem key={index}>
+            <ListItemText
+              primary={rate.description}
+              sx={{ fontSize: "18px", color: "#348" }}
+            />
+          </ListItem>
+        ))}
       </List>
 
       <Typography variant="body1" sx={{ marginBottom: "30px" }}>
@@ -33,10 +36,7 @@ const ServiceRates = () => {
         your travel experience with us worry-free, no matter where you’re
         headed.
       </Typography>
-      <Typography
-        variant="h6"
-        sx={{ fontWeight: "bold", marginBottom: "15px" }}
-      >
+      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: "15px" }}>
         Cancellation and Change Policy:
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "20px" }}>
@@ -50,10 +50,7 @@ const ServiceRates = () => {
         service for all our clients, without compromise. Thank you for your
         understanding and cooperation.
       </Typography>
-      <Typography
-        variant="h6"
-        sx={{ fontWeight: "bold", marginBottom: "15px" }}
-      >
+      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: "15px" }}>
         Please Note:
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "20px" }}>

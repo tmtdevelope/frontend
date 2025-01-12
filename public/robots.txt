@@ -1,3 +1,4 @@
+# *
 User-agent: *
 Allow: /
 Disallow: /dashboard/
@@ -5,8 +6,9 @@ Disallow: /dashboard/admin/
 Disallow: /dashboard/admin/requests/
 Disallow: /dashboard/admin/users/
 Disallow: /dashboard/quote/special-pay/
-Disallow: /private/
-Disallow: /tmp/
-Disallow: /secret/
 
+# Host
+Host: https://www.trustmtrans.com
+
+# Sitemaps
 Sitemap: https://www.trustmtrans.com/sitemap.xml

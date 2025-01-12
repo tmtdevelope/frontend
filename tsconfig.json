@@ -23,7 +23,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "public"],
+  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "public", "next-sitemap.config.js"],
   "exclude": ["node_modules"],
   "types": [
     "node",

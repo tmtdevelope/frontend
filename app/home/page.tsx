@@ -1,12 +1,13 @@
-  
-import Hero from "../components/Hero/Hero";
 import React from "react";
-import Services from "../components/Services/Services";
-import { EventPlanning } from "../components/EventPlanning/EventPlanning";
-import ServicesTwo from "../components/Services_2/ServicesTwo";
-import ServicesSection from "../components/Locations/ServicesSection";
-import LocationsList from "../components/Locations/LocationsList";
 import { Box } from "@mui/material";
+import dynamic from "next/dynamic";
+
+ const Hero = dynamic(() => import("../components/Hero/Hero"));
+const Services = dynamic(() => import("../components/Services/Services"));
+const EventPlanning = dynamic(() => import("../components/EventPlanning/EventPlanning"));
+const ServicesTwo = dynamic(() => import("../components/Services_2/ServicesTwo"));
+const ServicesSection = dynamic(() => import("../components/Locations/ServicesSection"));
+const LocationsList = dynamic(() => import("../components/Locations/LocationsList"));
 
 function Home() {
   return (

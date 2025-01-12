@@ -19,8 +19,7 @@ import { RemarksSection } from "../dashboard/forms/sections/RemarksSection";
 import { FileUploadSection } from "../dashboard/forms/sections/FileUploadSection";
 import { schema } from "../dashboard/forms/validations/schema";
 import TitleForm from "../dashboard/forms/utils/TitleForm";
-import { RootState } from "../redux/store/store";
-import { scrollToTop } from "../utils/scroll";
+ import { scrollToTop } from "../utils/scroll";
 import { freeQoute } from "../redux/actions/forms/freeQoateActions";
 import { BillingSection } from "../dashboard/forms/sections/BillingSection";
 
@@ -34,8 +33,7 @@ const GetFreeQoate = () => {
   const [fileUrls, setFileUrls] = useState<string[]>([]);
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const dispatch = useDispatch();
-  const state = useSelector((state: RootState) => state);
-
+ 
   const {
     register,
     handleSubmit,
@@ -49,8 +47,7 @@ const GetFreeQoate = () => {
   });
 
   const onSubmit = async (data: any) => {
-    console.log("data", data);
-
+ 
     try {
       const formData = new FormData();
 

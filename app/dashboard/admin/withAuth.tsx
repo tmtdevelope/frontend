@@ -32,8 +32,7 @@ const withAuth = <P extends object>(
     }, [user, loading, router]);
 
     if (loading || isCheckingAuth) {
-      console.log("Loading or checking auth - showing spinner");
-      return (
+       return (
         <Box
           sx={{
             display: "flex",

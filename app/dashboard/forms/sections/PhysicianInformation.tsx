@@ -1,4 +1,4 @@
-"use client"; // إذا كنت لا تستخدم هذا في بيئة الخادم، يمكنك حذفه
+"use client";
 
 import {
   Grid,
@@ -6,6 +6,7 @@ import {
   Autocomplete,
   Box,
   CircularProgress,
+  Typography,
 } from "@mui/material";
 import { useFormTheme } from "../utils/theme";
 import {
@@ -19,6 +20,7 @@ import { FormDataInsurance } from "../types/form";
 import { diagnosticCodes } from "../constants/form";
 import { inputLabelStyles, outlinedInputStyles } from "./styles";
 import { useEffect, useState, useCallback } from "react";
+import api from "@/app/common/api"; 
 
 interface Doctor {
   number: string;
@@ -33,9 +35,7 @@ interface StaffPhysicianSectionProps {
   register: UseFormRegister<FormDataInsurance>;
   setValue: UseFormSetValue<FormDataInsurance>;
   errors: FieldValues;
-
   control: Control<FormDataInsurance>;
-
   renderFormSection: (props: {
     title: string;
     children: React.ReactNode;
@@ -54,14 +54,20 @@ export function StaffPhysicianSection({
   const [doctorNames, setDoctorNames] = useState<Doctor[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [npi, setNpi] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+
   const staffPhysicianName = useWatch({ control, name: "staffPhysicianName" });
   const phoneNumberNPI = useWatch({ control, name: "phoneNumberNPI" });
   const faxNumber = useWatch({ control, name: "faxNumber" });
+
   const fetchDoctorNames = useCallback(async (npi: string) => {
     setLoading(true);
+    setError(null);
+
     try {
-      const response = await fetch(`http://localhost:8080/api/npi/${npi}`);
-      const data = await response.json();
+       const response = await api.get(`/npi/${npi}`);
+       const data = response.data?.data;
+
       if (data.results && data.results.length > 0) {
         const names = data.results.map((item: any) => ({
           label: ` ${item.number}`,
@@ -73,9 +79,11 @@ export function StaffPhysicianSection({
         setDoctorNames(names);
       } else {
         setDoctorNames([]);
+        setError("No results found for the provided NPI.");
       }
     } catch (error) {
       console.error("Error fetching data: ", error);
+      setError("Failed to fetch data. Please try again.");
       setDoctorNames([]);
     } finally {
       setLoading(false);
@@ -184,6 +192,12 @@ export function StaffPhysicianSection({
                 InputProps={{
                   ...params.InputProps,
                   ...inputProps,
+                  endAdornment: (
+                    <>
+                      {loading ? <CircularProgress size={24} /> : null}
+                      {params.InputProps.endAdornment}
+                    </>
+                  ),
                 }}
                 InputLabelProps={labelProps}
                 sx={getInputStyles()}
@@ -206,11 +220,16 @@ export function StaffPhysicianSection({
               const { key, ...restProps } = props;
               return (
                 <Box component="li" key={option.npi} {...restProps}>
-                  {loading ? <CircularProgress size={24} /> : option.label}
+                  {option.label}
                 </Box>
               );
             }}
           />
+          {error && (
+            <Typography color="error" sx={{ mt: 1 }}>
+              {error}
+            </Typography>
+          )}
         </Grid>
 
         <Grid item xs={12} md={6}>
@@ -225,7 +244,7 @@ export function StaffPhysicianSection({
             InputProps={inputProps}
             InputLabelProps={{
               ...labelProps,
-              shrink: !!errors.staffPhysicianName || !!staffPhysicianName, // رفع الـ placeholder إذا كانت القيمة موجودة
+              shrink: !!errors.staffPhysicianName || !!staffPhysicianName,
             }}
             sx={getInputStyles()}
           />

@@ -4,43 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* roboto-100 - latin */
 @font-face {
-  font-display: swap;  
+  font-display: swap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 100;
-  src: url("/fonts/roboto-v32-latin-700.woff2") format("woff2");
+  src: url("/fonts/roboto-v32-latin-100.woff2") format("woff2");
 }
 
-/* roboto-300italic - latin */
 @font-face {
   font-display: swap;
   font-family: "Roboto";
   font-style: italic;
   font-weight: 300;
-  src: url("/fonts/roboto-v32-latin-700.woff2") format("woff2");
+  src: url("/fonts/roboto-v32-latin-300italic.woff2") format("woff2");
 }
-
-/* roboto-regular - latin */
-@font-face {
-  font-display: swap;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/roboto-v32-latin-700.woff2") format("woff2");
-}
-
-/* roboto-500 - latin */
 @font-face {
   font-display: swap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/roboto-v32-latin-700.woff2") format("woff2");
+  src: url("/fonts/roboto-v32-latin-500.woff2") format("woff2");
 }
 
-/* roboto-700 - latin */
 @font-face {
   font-display: swap;
   font-family: "Roboto";
@@ -49,13 +35,12 @@
   src: url("/fonts/roboto-v32-latin-700.woff2") format("woff2");
 }
 
-/* roboto-900 - latin */
 @font-face {
   font-display: swap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 900;
-  src: url("/fonts/roboto-v32-latin-700.woff2") format("woff2");
+  src: url("/fonts/roboto-v32-latin-900.woff2") format("woff2");
 }
 
 * {
@@ -70,7 +55,6 @@
   --border-color: rgba(0, 0, 0, 0.12);
   --bg-mui: #f4f6f8;
 }
- 
 
 [data-theme="dark"] {
   --background-color: linear-gradient(
@@ -86,7 +70,7 @@
 
 body {
   margin-top: 80px;
-  font-family:  Roboto , sans-serif;  
+  font-family: "Roboto", sans-serif;
   background: var(--background-color);
   color: var(--text-color);
   transition: all 0.3s ease;
@@ -117,11 +101,4 @@ body {
 
 .link[aria-current="page"]::after {
   width: 100%;
-}
-
-.pattern-grid-lg {
-  background-image: linear-gradient(currentColor 1px, transparent 1px),
-    linear-gradient(to right, currentColor 1px, transparent 1px);
-  background-size: 48px 48px;
-  opacity: 0.1;
 }

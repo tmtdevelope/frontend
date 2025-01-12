@@ -10,6 +10,8 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
   href,
   children,
   ariaLabel,
+  role, 
+  tabIndex,  
 }) => {
   const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
@@ -17,7 +19,9 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
   useEffect(() => {
     setIsClient(true);
   }, []);
+
   if (!isClient) return null;
+
   const isActive = pathname === href;
 
   return (
@@ -25,10 +29,10 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
       href={href}
       passHref
       className={`link ${isActive ? "active" : ""}`}
-      role="menuitem"
+      role={role}  
       aria-label={ariaLabel}
       aria-current={isActive ? "page" : undefined}
-      tabIndex={0}
+      tabIndex={tabIndex} 
     >
       {children}
     </Link>

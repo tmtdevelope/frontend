@@ -72,15 +72,7 @@ export interface FormDataInsurance {
   stairsAssistance?: string; // Add missing fields
   oxygenFlowRate?: number; // Add missing fields
 }
-interface ServiceSectionProps {
-  register: any;
-  errors: any;
-  watch: (name: string) => string;
-  renderFormSection: (section: {
-    title: string;
-    children: React.ReactNode;
-  }) => JSX.Element;
-}
+ 
 export interface FormSectionProps {
   register: any;
   errors: any;

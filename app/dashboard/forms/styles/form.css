@@ -54,45 +54,4 @@
   @apply bg-blue-500 hover:bg-blue-400 text-white;
 }
 
-/* Light mode styles */
-/* .light-mode {
-  --input-background: #fff;
-  --input-color: #000;
-  --border-color: #ccc;
-  --label-color: #000;
-  --helper-text-color: #d32f2f;
-  --select-background: #fff;
-  --select-color: #000;
-}
-
- .dark-mode {
-  --input-background: #333;
-  --input-color: #fff;
-  --border-color: rgba(255, 255, 255, 0.23);
-  --label-color: rgba(255, 255, 255, 0.7);
-  --helper-text-color: #ff4081;
-  --select-background: rgb(51, 51, 51);
-  --select-color: #fff;
-}
-
- .form-control {
-  background-color: var(--input-background);
-  color: var(--input-color);
-}
-
-.form-control .MuiInputLabel-root {
-  color: var(--label-color);
-}
-
-.form-control .MuiOutlinedInput-root {
-  border-color: var(--border-color);
-}
-
-.form-control .MuiSelect-root {
-  background-color: var(--select-background);
-  color: var(--select-color);
-}
-
-.form-control .MuiFormHelperText-root {
-  color: var(--helper-text-color);
-} */
+ 

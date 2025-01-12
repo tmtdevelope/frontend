@@ -8,8 +8,7 @@ import {
   Typography,
   Alert,
   Box,
-  Button,
-} from "@mui/material";
+ } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTheme } from "next-themes";
@@ -109,7 +108,7 @@ const SpecialPay = () => {
       const result = await dispatch(spacialPay(formData) as any);
 
       if (spacialPay.fulfilled.match(result)) {
-        setSuccessMsg(result.payload.message || "Form submitted successfully!"); // رسالة النجاح
+        setSuccessMsg(result.payload.message || "Form submitted successfully!");  
         setErrorMsg("");
         scrollToTop();
       } else {

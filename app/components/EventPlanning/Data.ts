@@ -1,6 +1,3 @@
-/** @format */
-
-// components/Data.ts
 import { Service } from "./types";
 
 export const services: Service[] = [
@@ -9,7 +6,8 @@ export const services: Service[] = [
     subtitle: "Reliable and Comfortable",
     description:
       "We offer top-notch personal transport services for all your needs.",
-    imageUrl: "/personal-transport.png",
+    imageUrl:
+      "https://res.cloudinary.com/dhijqwob4/image/upload/v1736690180/images/fcozkmnymiugxq1dv2gi.webp",
     features: ["Safe rides", "Experienced drivers", "Flexible scheduling"],
   },
   {
@@ -17,14 +15,16 @@ export const services: Service[] = [
     subtitle: "On-Time and Convenient",
     description:
       "Ensure a hassle-free journey to and from the airport with our services.",
-    imageUrl: "/airport-transfers.png",
+    imageUrl:
+      "https://res.cloudinary.com/dhijqwob4/image/upload/v1736690179/images/gmswpmuun9wutpx1tq1e.webp",
     features: ["Flight tracking", "Meet and greet", "Luggage assistance"],
   },
   {
     title: "City Tours",
     subtitle: "Explore with Us",
     description: "Discover the city’s highlights with our guided tours.",
-    imageUrl: "/city-tours.png",
+    imageUrl:
+      "https://res.cloudinary.com/dhijqwob4/image/upload/v1736690180/images/jyndtp1nrysiqrdloicy.webp",
     features: [
       "Custom itineraries",
       "Comfortable vehicles",

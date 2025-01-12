@@ -19,11 +19,9 @@ const TitleForm = ({ title, primaryColor }: any) => {
       </Grid>
       <Grid item xs={12}>
         <Typography
-          variant="subtitle1"
-          align="center"
+           align="center"
           sx={{
-            color: "text.secondary",
-            fontSize: { xs: "0.9rem", md: "1rem" },
+             fontSize: { xs: "0.9rem", md: "1rem" },
           }}
         >
           Non-Emergency Medical Transportation

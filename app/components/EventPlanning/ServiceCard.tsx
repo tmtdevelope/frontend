@@ -1,18 +1,10 @@
-/** @format */
 "use client";
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  List,
-  ListItem,
-  Box,
-} from "@mui/material";
+import { Card, CardContent, Typography, List, ListItem } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { Service } from "./types";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 
 export const ServiceCard: React.FC<Service> = ({
   title,
@@ -39,12 +31,16 @@ export const ServiceCard: React.FC<Service> = ({
         transition: "box-shadow 0.3s",
       }}
     >
-      <CardMedia
-        component="img"
-        height="200"
-        image={imageUrl}
+      <Image
+        height={200}
+        width={400}
+        src={imageUrl}
         alt={title}
-        sx={{ borderRadius: "4px 4px 0 0" }}
+        style={{
+          width: "100%",
+          height: "auto",
+          objectFit: "cover",
+        }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>

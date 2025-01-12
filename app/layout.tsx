@@ -6,6 +6,7 @@ import { IMAGES } from "./utils/images";
 import Script from "next/script";  
 import Navbar from "./components/Header/Navbar";
 import FooterWrapper from "./FooterWrapper";
+ 
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -54,9 +55,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* Preconnect to Google Tag Manager */}
+      <link rel="preconnect" href="https://www.googletagmanager.com" />
+      <link rel="preconnect" href="https://www.google-analytics.com" />
+
       {/* Google Tag Manager */}
       <Script
-        strategy="afterInteractive"
+       id="gtm-script"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -71,12 +77,12 @@ export default function RootLayout({
 
       {/* Google Analytics */}
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=G-9MH4V607TJ`}  
       />
       <Script
-        id="google-analytics"
-        strategy="afterInteractive"
+        id="365690102"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];

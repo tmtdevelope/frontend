@@ -65,8 +65,7 @@ export default function LoginForm() {
   // Redirect based on user role
   useEffect(() => {
     if (user) {
-      console.log("User updated:", user);
-      switch (user.role) {
+       switch (user.role) {
         case ROLES_USER.ADMIN:
           router.push("/dashboard/admin/requests");
           break;

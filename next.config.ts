@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import withBundleAnalyzer from "@next/bundle-analyzer";
+// import withBundleAnalyzer from "@next/bundle-analyzer";
 
 const nextConfig: NextConfig = {
   images: {
@@ -11,11 +11,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-   reactStrictMode: true,
-  swcMinify: true,
+  reactStrictMode: true,
   compress: true,
 };
 
-export default withBundleAnalyzer({
-  enabled: process.env.ANALYZE === "true", 
-})(nextConfig);
+export default nextConfig;
+
+// إذا أردت تفعيل Bundle Analyzer مستقبلاً استخدم الكود التالي
+// export default withBundleAnalyzer({
+//   enabled: process.env.NODE_ENV === "development" && process.env.ANALYZE === "true",
+// })(nextConfig);

@@ -2,224 +2,136 @@
 
 "use client";
 
+import React from "react";
 import {
   Container,
   Grid,
   Typography,
   Box,
   Link,
-  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from "@mui/material";
-import {
-  Facebook,
-  Twitter,
-  Instagram,
-  LinkedIn,
-  Fax,
-  Mail,
-  LocationOn,
-  Phone,
-} from "@mui/icons-material";
 import { useTheme } from "next-themes";
 import { navigationItems } from "../Header/NavigationItem";
-import { Icon } from "@iconify/react";
-import tiktokIcon from "@iconify/icons-simple-icons/tiktok";
+import { contactInfo } from "./ContactInfo";
+import { socialLinks } from "./SocialLinks";
 
 const Footer = () => {
   const { theme } = useTheme();
   const isDarkMode = theme === "dark";
 
-   const textColor = isDarkMode ? "#fff" : "text.primary";
-  const linkHoverColor = isDarkMode ? "white" : "primary.main";
+  const textColor = isDarkMode ? "text-gray-300" : "text-gray-700";
+  const iconColor = isDarkMode ? "#ffffff" : "#000000";
+  const iconHoverColor = isDarkMode ? "#bbbbbb" : "#1976d2";
 
   return (
-    <Box
-      component="footer"
-      sx={{
-        pt: 8,
-        pb: 4,
-        borderTop: 1,
-        borderColor: "divider",
-        backgroundColor: isDarkMode ? "background.default" : "background.paper",
-      }}
-    >
+    <footer className={`pt-16 pb-8 border-b`}>
       <Container>
         <Grid container spacing={8}>
-           <Grid item xs={12} md={4}>
-            <Typography variant="h6" fontWeight="bold" mb={4}>
+          <Grid item xs={12} md={4}>
+            <Typography
+              variant="h2"
+              component="h2"
+              sx={{ fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" } }}  
+            >
               Follow Us
             </Typography>
-            <Typography color={textColor} mb={4}>
-              Stay connected with us through our social media channels. Follow us
-              for the latest updates and news.
+            <Typography className={`${textColor} mb-4`}>
+              Stay connected with us through our social media channels. Follow
+              us for the latest updates and news.
             </Typography>
             <Box display="flex" gap={2}>
-              <Link
-                href="https://www.facebook.com/TrustmedicaLtransportation"
-                target="_blank"
-                color={textColor}
-                sx={{
-                  "&:hover": { color: linkHoverColor },
-                }}
-              >
-                <Facebook fontSize="large" />
-              </Link>
-              <Link
-                href="https://x.com/MedicalTmt"
-                target="_blank"
-                color={textColor}
-                sx={{
-                  "&:hover": { color: linkHoverColor },
-                }}
-              >
-                <Twitter fontSize="large" />
-              </Link>
-              <Link
-                href="https://www.instagram.com/trust_medical_transportation/"
-                target="_blank"
-                color={textColor}
-                sx={{
-                  "&:hover": { color: linkHoverColor },
-                }}
-              >
-                <Instagram fontSize="large" />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/company/trust-medical-transportation-tmt/"
-                target="_blank"
-                color={textColor}
-                sx={{
-                  "&:hover": { color: linkHoverColor },
-                }}
-              >
-                <LinkedIn fontSize="large" />
-              </Link>
-              <Link
-                href="https://www.tiktok.com/@trust_medical_transport"
-                target="_blank"
-                color={textColor}
-                sx={{
-                  "&:hover": { color: linkHoverColor },
-                }}
-              >
-                <Icon icon={tiktokIcon} width={24} height={24} />
-              </Link>
-            </Box>
-          </Grid>
-
-           <Grid item xs={12} md={4}>
-            <Typography variant="h6" fontWeight="bold" mb={4}>
-              Quick Links
-            </Typography>
-            <Box component="ul" sx={{ listStyle: "none", p: 0, m: 0 }}>
-              {navigationItems.map((item) => (
-                <Box component="li" key={item.id} mb={2}>
-                  <Link
-                    href={item.href}
-                    color={textColor}
-                    underline="hover"
+              {socialLinks.map((social, index) => (
+                <Link
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  aria-label={`Follow us on ${social.name}`}
+                  className="hover:opacity-75 transition-opacity"
+                  tabIndex={0}
+                >
+                  <Box
                     sx={{
-                      "&:hover": { color: linkHoverColor },
+                      color: iconColor,
+                      "&:hover": { color: iconHoverColor },
                     }}
                   >
-                    {item.label}
-                  </Link>
-                </Box>
+                    {social.icon}
+                  </Box>
+                </Link>
               ))}
             </Box>
           </Grid>
 
-           <Grid item xs={12} md={4}>
-            <Typography variant="h6" fontWeight="bold" mb={4}>
+          <Grid item xs={12} md={4}>
+            <Typography
+              variant="h2"
+              component="h2"
+              sx={{ fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" } }} 
+            >
+              Quick Links
+            </Typography>
+            <List role="list">
+              {navigationItems.map((item) => (
+                <ListItem key={item.id} disablePadding role="listitem">
+                  <Link
+                    href={item.href}
+                    className={`${textColor} underline hover:text-blue-600`}
+                    tabIndex={0}
+                  >
+                    {item.label}
+                  </Link>
+                </ListItem>
+              ))}
+            </List>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <Typography
+              variant="h2"
+              component="h2"
+              sx={{ fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" } }}  
+            >
               Contact Info
             </Typography>
-            <Box display="flex" flexDirection="column" gap={3}>
-               <Box display="flex" alignItems="center">
-                <IconButton sx={{ mr: 1, color: "primary.main" }}>
-                  <Phone />
-                </IconButton>
-                <Link
-                  href="tel:+16507999921"
-                  color={textColor}
-                  underline="hover"
-                  sx={{
-                    "&:hover": { color: linkHoverColor },
-                  }}
-                >
-                  <Typography>+1 (650) 799-9921</Typography>
-                </Link>
-              </Box>
-
-               <Box display="flex" alignItems="center">
-                <IconButton sx={{ mr: 1, color: "primary.main" }}>
-                  <Fax />
-                </IconButton>
-                <Link
-                  href="tel:+16502922323"
-                  color={textColor}
-                  underline="hover"
-                  sx={{
-                    "&:hover": { color: linkHoverColor },
-                  }}
-                >
-                  <Typography>+1 (650) 292-2323</Typography>
-                </Link>
-              </Box>
-
-               <Box display="flex" alignItems="center">
-                <IconButton sx={{ mr: 1, color: "primary.main" }}>
-                  <Mail />
-                </IconButton>
-                <Link
-                  href="mailto:trustmtrans@outlook.com"
-                  color={textColor}
-                  underline="hover"
-                  sx={{
-                    "&:hover": { color: linkHoverColor },
-                  }}
-                >
-                  <Typography>trustmtrans@outlook.com</Typography>
-                </Link>
-              </Box>
-
-              {/* العنوان */}
-              <Box display="flex" alignItems="center">
-                <IconButton sx={{ mr: 1, color: "primary.main" }}>
-                  <LocationOn />
-                </IconButton>
-                <Link
-                  href="https://www.google.com/maps?q=291+Emaron+Dr,+San+Bruno,+CA+94066"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  color={textColor}
-                  underline="hover"
-                  sx={{
-                    "&:hover": { color: linkHoverColor },
-                  }}
-                >
-                  <Typography>291 Emaron Dr, San Bruno, CA 94066</Typography>
-                </Link>
-              </Box>
-            </Box>
+            <List role="list">
+              {contactInfo.map((info, index) => (
+                <ListItem key={index} disablePadding role="listitem">
+                  <ListItemIcon className="min-w-0 mr-2">
+                    <Box
+                      sx={{
+                        color: iconColor,
+                        "&:hover": { color: iconHoverColor },
+                      }}
+                    >
+                      {info.icon}
+                    </Box>
+                  </ListItemIcon>
+                  <Link
+                    href={info.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${textColor} hover:text-blue-600`}
+                    tabIndex={0}
+                  >
+                    <ListItemText primary={info.text} />
+                  </Link>
+                </ListItem>
+              ))}
+            </List>
           </Grid>
         </Grid>
       </Container>
-
-       <Box
-        sx={{
-          borderTop: 1,
-          borderColor: "divider",
-          mt: 8,
-          pt: 4,
-          textAlign: "center",
-        }}
-      >
-        <Typography color={textColor}>
+      <Box className={`border-t mt-12 pt-8 text-center`}>
+        <Typography className={textColor}>
           © {new Date().getFullYear()} Trust Medical Transportation. All rights
           reserved.
         </Typography>
       </Box>
-    </Box>
+    </footer>
   );
 };
 

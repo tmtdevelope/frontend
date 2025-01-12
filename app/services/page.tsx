@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box  } from "@mui/material";
 import ServiceCard from "../components/Services/ServiceCard";
 import { services } from "../components/Services/Data";
 import TitleSections from "@/app/utils/TitleSections";
